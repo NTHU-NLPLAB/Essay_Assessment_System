@@ -1,0 +1,224 @@
+.leftDiv {
+    margin: 22px 5% 5% 5%;
+}
+
+
+#titleshow {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+
+.texth4{
+    position: relative;
+    top: 10px;
+}
+
+.sen-tool{
+    width: 25%;
+}
+.col-sen-toop{
+    position: relative;
+    width: 70%;
+    
+    padding-left: 15px;
+}
+.sen-notok{
+ background: repeating-linear-gradient(
+    to right,
+    #FFFACD,
+    #FFFACD 10px,
+    #FFFACD 10px,
+    #FFFACD 20px
+    );
+}
+.sen-bad{
+    background: repeating-linear-gradient(
+        to right,
+        #FFE4B5,
+        #FFE4B5 10px,
+        #FFE4B5 10px,
+        #FFE4B5 20px
+      );
+}
+
+.card-title-sen {
+    position: relative;
+    background-color: #f9f9f9;
+    height: 28px;
+    width: 101.5%;
+    margin-bottom: 0.75rem;
+    right: 3px;
+    top: -6px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+
+}
+.col-button{
+    position: relative;
+    width: 22%;
+    left:40px; 
+}
+.p-sen{
+    padding-left:10px ;
+    margin-top: 3px;
+    margin-bottom: 0.05rem;
+}
+.p-sens{
+    position: relative;
+    bottom:8px;
+}
+.card-body-sen {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0.15rem;
+}
+
+
+#card1{
+    position: relative;
+    top : 9px
+}
+#card2{
+    position: relative;
+    top : 15px
+}
+
+
+
+#card3{
+    position: relative;
+    top : 21px
+}
+.col-specail{
+    position: relative;
+    width: 25%;
+    padding-right: 10px;
+    padding-left: 15px;
+}
+
+.col-score{
+    position: relative;
+    width: 20%;
+    padding-right: 40px;
+    padding-left: 20px;
+    left: -30px;
+}
+.col-prgress{
+    position: relative;
+    width: 55%;
+    left: -30px;
+    top:13px;
+}
+
+#score_1{
+    position: relative;
+    top:23px;
+
+}
+
+#first-word{
+    top: 7px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 60px
+}
+
+#score-border {
+    border-left: 2px double black;;
+    border-left-style:dashed
+}
+
+#help{
+    position: relative;
+    left : 20px;
+    bottom: 1px;
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+
+.card1-title {
+    padding: -0.25rem 1.25rem;
+    margin-bottom: 0;
+    color: inherit;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.title-pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0px;
+    margin: 8px;
+    list-style: none;
+    border-radius: .25rem;
+}
+.score-border-1{
+    border-right: 2px double black;;
+    border-right-style:dashed
+
+}
+
+
+#rightDiv {
+    position: fixed;
+    top: 56px;
+    right: 0px;
+    overflow: auto;
+    overflow-x: hidden;
+    background: #c4d3f6;
+    color: black;
+    height: 95%;
+    padding: 5px 40px;
+}
+
+.text-body {
+    margin-top: 30px;
+}
+
+
+#B-I{
+    padding: 0.01rem .2rem;
+    margin-right: 4px;
+    
+}
+
+.B-R{
+    background-color: greenyellow;
+    
+}
+
+.B-D{
+    background-color: rgb(255, 104, 104);
+}
+.B-D{
+    background-color: rgb(255, 104, 104);
+}
+.B-II{
+    border-style:solid;
+    border-width:2px; 
+    margin: 4px;
+    padding: 2px;
+    background-color: #ffc107;
+}
+.B-I{
+    
+    background-color: #ffc107;
+}
+
+#second-word{
+    font-size: 18px;
+        margin-bottom: .5rem;
+        font-family: inherit;
+        font-weight: 50;
+        line-height: 1.2;
+        color: inherit;
+}
+
+#suggest-info{
+    top: -10px;
+    position: relative;
+}
+
+  

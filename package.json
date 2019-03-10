@@ -1,0 +1,22 @@
+{
+  "name": "aes_system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NLPting/AES_system.git"
+  },
+  "author": "ting",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NLPting/AES_system/issues"
+  },
+  "homepage": "https://github.com/NLPting/AES_system#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
