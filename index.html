@@ -5,6 +5,9 @@
         <link rel="stylesheet" type="text/css" href="./css/style.css">
         <link rel="stylesheet" type="text/css" href="./css/linggle.css">
         <link rel="stylesheet" type="text/css" href="./css/core.css">
+        <!--
+        <link rel="stylesheet" type="text/css" href="./css/write.css">
+        -->
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -32,10 +35,19 @@
                 <div class="texth4"><h4>Input Essay</h4></div>
                 <div class='text-body'>
                     <div >
+                        <!--
+                        <div contenteditable="" id="write-aes">
+                        
+                            </div>
+
+                            <div class="alert alert-primary" role="alert" id='inalert'>
+                                    <a href="#" class="alert-link" id='word_count'>0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Function AES will carry out.)
+                            </div>
+                        -->
                     <div class="form-group shadow-textarea">
                         <textarea class="form-control z-depth-1" for="exampleFormControlTextarea6" rows="18" placeholder="Write something here..." id='write-aes'></textarea>
                         <div class="alert alert-primary" role="alert" id='inalert'>
-                            <a href="#" class="alert-link" id='word_count'>0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Try to write more.)
+                            <a href="#" class="alert-link" id='word_count'>0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Function AES will carry out.)
                         </div>
                     </div>
                     <div class="row">
@@ -59,69 +71,125 @@
             </div>
         </div>
 
+
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="rightDiv">
-            
-            <div class="card" id='card2'>
-                <div class="card1-title ">
-                    <h5 class="col-12" id='first-word'>Dectection</h5>
-                </div>
-                <div class="card-body" id='feedback-dectect'>
-                    
-                </div>
-            </div>
-            <div class="card" id='card3'>
-                <div class="card1-title ">
-                    <span>
-                        <h5 class="col-12" id='first-word'>Suggestion<h8 class="col-12" style="padding-left:3em">&nbsp;</h8><h8 class="col-12 B-I" id='second-word'>Insert word</h8><h8 class="col-12 B-D" id='second-word'>Delete word</h8><h8 class="col-12 B-R" id='second-word'>Replace word</h8></h5>
-                    <span>
+            <!--
+            <div class="card" id='card1'>
+                <div class="card1-title text-center">
+                    <h5 class="col-12" id='first-word'>Interactive Writing Suggestion</h5>
                 </div>
                 <div class="card-body">
-                    <div id='suggest-info'></div>
-                    <form class="navbar-form navbar-left">
-                            <div class="form-group">
-                              <!-- search -->
-                              <div class="input-group">
-                                <input id="search-bar" type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                  <button id="search-bar-btn" class="linggle btn btn-main" type="button">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                  </button>
-                                </span>
-                              </div>
-                            </div>
-                    </form>
-                    <div>
-                        <div class="linggle search-result" style="display: block;">
-                                  <!-- search result listitems -->
-                                  <table class="table">
-                                    <colgroup><col id="ngram">
-                                    <col id="percent">
-                                    <col id="count">
-                                    <col id="example">
-                                    </colgroup><thead>
-                                      <tr>
-                                        <th class="col-xs-9">N-gram</th>
-                                        <th class="col-xs-1 text-right">Percent</th>
-                                        <th class="col-xs-1 text-right">Count</th>
-                                        <th class="col-xs-1">Example</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody><tr><td colspan="4">No result</td></tr></tbody>
-                                  </table>
-                                <div class="linggle spinner" style="display: none;"></div>
+                    <div class="row">
+                        <div>
+                            <ul class=entries id="entries">
+                            </ul>
                         </div>
-                    
+                    </div>
                 </div>
             </div>
-
-
-
+            -->
+            <div class='functionall'>
+                <div class="card" id='card1'>
+                    <div class="card1-title ">
+                        <h5 class="col-12" id='first-word'>
+                            Task Help
+                            <button id ='help' type="button" class="btn text-center button4" data-toggle="modal" data-target="#exampleModalLong">
+                                Help
+                            </button>
+                        </h5>
+                    </div>
+                    <div id ='score-feeback' class="card-body">
+                        <div class="row">
+                            <div class="col-specail">
+                                <div class="list-group">
+                                    <a class="list-group-item text-center">CEFR Level</a>
+                                    <a class="list-group-item text-center">CEFR Score</a>    
+                                </div>
+                            </div>
+                            <div class="col-score">
+                                <div class="list-group"id='score-border'>
+                                    <a class="list-group-item text-center"><div id="cerf-leve"></div></a>
+                                    <a class="list-group-item text-center"><div id='cerf-score'></div></a>
+                                </div>
+                            </div>
+                            <div class="col-prgress">
+                                <div class="progress" style="height: 25px;">
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='a1'>A1</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='a2'>A2</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='b1'>B1</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='b2'>B2</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='c1'>C1</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center " role="progressbar" style="width: 16.6%" id='c2'>C2</div>
+                                </div>
+                                <div class="progress" style="height: 25px;" id='score_1'>
+                                    <div id='score-bar' class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%">70%</div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>       
+                </div>
+                    
+                <div class="card" id='card2'>
+                    <div class="card1-title ">
+                        <h5 class="col-12" id='first-word'>Dectection</h5>
+                    </div>
+                    <div class="card-body" id='feedback-dectect'>
+                        
+                    </div>
+                </div>
+                <div class="card" id='card3'>
+                    <div class="card1-title ">
+                        <span>
+                            <h5 class="col-12" id='first-word'>Suggestion<h8 class="col-12" style="padding-left:3em">&nbsp;</h8><h8 class="col-12 B-I" id='second-word'>Insert word</h8><h8 class="col-12 B-D" id='second-word'>Delete word</h8><h8 class="col-12 B-R" id='second-word'>Replace word</h8></h5>
+                        <span>
+                    </div>
+                    <div class="card-body">
+                        <div id='suggest-info'></div>
+                        <form class="navbar-form navbar-left">
+                                <div class="form-group">
+                                <!-- search -->
+                                <div class="input-group">
+                                    <input id="search-bar" type="text" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                    <button id="search-bar-btn" class="linggle btn btn-main" type="button">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </button>
+                                    </span>
+                                </div>
+                                </div>
+                        </form>
+                        <div>
+                            <div class="linggle search-result" style="display: block;">
+                                    <!-- search result listitems -->
+                                    <table class="table">
+                                        <colgroup><col id="ngram">
+                                        <col id="percent">
+                                        <col id="count">
+                                        <col id="example">
+                                        </colgroup><thead>
+                                        <tr>
+                                            <th class="col-xs-9">N-gram</th>
+                                            <th class="col-xs-1 text-right">Percent</th>
+                                            <th class="col-xs-1 text-right">Count</th>
+                                            <th class="col-xs-1">Example</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody><tr><td colspan="4">No result</td></tr></tbody>
+                                    </table>
+                                    <div class="linggle spinner" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
             
         <script src="./js/main.js"></script>
         <script src="./js/linggle.js"></script>
         <script src="./js/example.js"></script>
         <script src="./js/search-bar.js"></script>
+        <script src="./js/write.js"></script>
+
 
     </body>
 </html>

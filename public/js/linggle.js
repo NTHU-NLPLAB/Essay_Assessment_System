@@ -12,12 +12,12 @@ function numberWithCommas(x) {
 var SearchResult = {
     currentResultTime: Date.now(),
     query: function(query) {
-        console.log(query)
-      // query = encodeURI(query);
-      // escape `?` linggle operator
-      // query = query.replace(/\?/g, '%3F');
-      // escape `/` linggle operator
-      // query = query.replace(/\//g , '@');
+       query = encodeURI(query);
+       //escape `?` linggle operator
+       query = query.replace(/\?/g, '%3F');
+       //escape `/` linggle operator
+       query = query.replace(/\//g , '@');
+       console.log(query)
       $.ajax({
           url: API_URL_linggle,
           type: 'POST',
