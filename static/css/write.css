@@ -1,4 +1,4 @@
-#write-aes {
+#search {
     display: block;
     width: 100%;
     height: 370px;
@@ -25,14 +25,11 @@
 .example .c1 {color:white;}
 .example .c2 {color:white;}
 
-#write-aes span:hover {
+#search span:hover {
    color: red;
  }
 
- .entries{
-    margin-top:-22
- }
-
+ 
 
 
 
@@ -96,4 +93,20 @@
    padding: 0 8px;
    text-decoration: none;
  }
+ 
+
+ .patt{
+   font-weight:bold;
+   
+ }
+ .pattern{
+  margin-top: 5px;
+  margin-bottom: 0rem;
+ }
+
+ #written{
+  position: relative;
+  top: 25px;
+}
+
  
