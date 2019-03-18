@@ -165,6 +165,7 @@ function revise_content(data , score){
 $("#send-aes").click(function(){
 
     var sentence = $("#search").text()
+    console.log(sentence)
     $("#written").show()
 
     //console.log(sentence)

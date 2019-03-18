@@ -61,8 +61,10 @@ $( "#search" ).on("keyup", function(e){
     showHint();
   }
 
-  var sentence = $("#search").text()
-    console.log(sentence)
+  var sentence = $('#search').html().replace(/<div>/gi,' ').replace(/<\/div>/gi,'').replace(/<span>/gi,' ').replace(/<\/span>/gi,'');
+  //var sentence = $("#search").text()
+
+    
 
     word_number = countWords(sentence)
     document.getElementById("word_count").innerHTML =word_number+' ';
@@ -75,11 +77,15 @@ $( "#search" ).on("keyup", function(e){
 
 });
 
-function countWords(s){
+function countWords(s){ 
+  
 	s = s.replace(/(^\s*)|(\s*$)/gi,"");
-	s = s.replace(/[ ]{2,}/gi," ");
-	s = s.replace(/\n /,"\n");
-    return s.split(' ').length
+  s = s.replace(/[ ]{2,}/gi," ");
+  s = s.replace(/\n /,"\n");
+
+  var tokens = s.split(/\s+/)
+  
+    return tokens.length
 }
 
 
@@ -97,7 +103,8 @@ function spanText(event) {
   if (str.slice(-1) == '\n') {
   str = str.substring(0, str.length - 1)
   }
-  $("#search")[0].innerHTML = "<span>" + str.replace(/[\xa0 ]*\n/g," <br>").split(/[\xa0\ ]/g).join("</span><span>&nbsp;") + "</span>";
+  //$("#search")[0].innerHTML = "<span>" + str.replace(/[\xa0 ]*\n/g," <br>").split(/[\xa0\ ]/g).join("</span><span>&nbsp;") + "</span>";
+  $("#search")[0].innerHTML = "<span>" +str.replace(/[\xa0 ]*\n/g," <br>").split(/[\xa0\ ]/g).join("</span><span>&nbsp;") + "</span>";
   setCaretLast();
   $("#search span").mouseenter(onHover);
 }
@@ -122,7 +129,7 @@ function getIndex(node) {
 
 function searchText() {
   if ($("#search")[0].innerText == undefined) {
-  return $("#search")[0].innerHTML.replace(/<br>/gi,"\n").replace(/(<([^>]+)>)/g, "").replace(/&nbsp;/g," ");
+  return $("#search")[0].innerHTML.replace(/<br>/gi,"\n").replace(/(<([^>]+)>)/g, "");
   } else {
   return $("#search")[0].innerText;
   }
