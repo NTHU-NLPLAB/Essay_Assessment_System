@@ -1,9 +1,11 @@
+$("#written").hide()
 
 $(document).ready(function() {
     SearchBar.init();
   });
 const send = $("#send");
-const aes_content = $("#write-aes");
+//const aes_content = $("#write-aes");
+const aes_content = $("#search").text();
 var word_number = 0;
 $('#score-feeback').hide();
 $("#try-aes").hide()
@@ -161,7 +163,12 @@ function revise_content(data , score){
 }
 
 $("#send-aes").click(function(){
-    var sentence = aes_content.val()
+
+    var sentence = $("#search").text()
+    $("#written").show()
+
+    //console.log(sentence)
+
     $('#score-feeback').hide();
     $('#a1').css("background-color",'#17a2b8');
     $('#a2').css("background-color",'#17a2b8');
@@ -176,6 +183,9 @@ $("#send-aes").click(function(){
         $('#score-feeback').show();
     }
 
+    $(".functionall").show()
+    $(".writeAhead").hide()
+
     setTimeout(function() {
     dect_it_post(sentence);
     },2000)
@@ -184,7 +194,7 @@ $("#send-aes").click(function(){
 })
 
 $("#try-aes").click(function(){
-    var sentence = aes_content.val()
+    var sentence = $("#search").text()
     $('#score-feeback').hide();
     $('.linggle.search-result').hide()
     $("#try-aes").hide()
@@ -205,24 +215,7 @@ $("#try-aes").click(function(){
 
 })
 
-$( "#write-aes" ).on("keyup", function(e){
-    //console.log($("#mes").val());
-    word_number = countWords(aes_content.val())
-    document.getElementById("word_count").innerHTML =word_number+' ';
-    if (word_number>=5){
-        document.getElementById('send-aes').disabled=false;
-    }else{document.getElementById('send-aes').disabled=true;}
-    if (word_number>=5){
-        document.getElementById('try-aes').disabled=false;
-    }else{document.getElementById('try-aes').disabled=true;}
-  });
 
-function countWords(s){
-	s = s.replace(/(^\s*)|(\s*$)/gi,"");
-	s = s.replace(/[ ]{2,}/gi," ");
-	s = s.replace(/\n /,"\n");
-    return s.split(' ').length
-}
 
 
 $('.linggle.search-result').hide()
@@ -391,9 +384,7 @@ function revise_sentence(data , tag_token){
         }
     }
     content+='</div>'
-    
     document.getElementById('suggest-info').innerHTML =content.replace(' ,',',').replace(' .','.');
-    
 }
 
 
