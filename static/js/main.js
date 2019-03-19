@@ -15,18 +15,22 @@ document.getElementById('try-aes').disabled=true;
 
 API_URL_d = "http://thor.nlplab.cc:7777/aes_dect"
 API_URL_d_sen = "http://thor.nlplab.cc:7777/dect_sen"
-API_URL = "http://thor.nlplab.cc:7777/aes"
+API_URL_score = "http://thor.nlplab.cc:7777/aes"
 
 function score_it_post(query){
+
     
     $.ajax({
         type: "POST",
-        url: API_URL,
+        url: API_URL_score,
         data: JSON.stringify({courpus: query}),
         dataType: 'json',
         success: function (data) {
+
+            console.log('-------')
             cerf_show(data)
             console.log(data)
+            console.log('-----------')
         }, 
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             
@@ -163,6 +167,9 @@ function revise_content(data , score){
 }
 
 $("#send-aes").click(function(){
+
+    //var sentence = $('#search').html().replace(/<div>/gi,' ').replace(/<\/div>/gi,'').replace(/<span>/gi,' ').replace(/<\/span>/gi,'');
+
 
     var sentence = $("#search").text()
     console.log(sentence)
