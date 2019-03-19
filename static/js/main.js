@@ -42,9 +42,9 @@ function score_it_post(query){
 
 function cerf_show(data){
     document.getElementById("cerf-leve").innerHTML = data['cerf'];
-    document.getElementById("cerf-score").innerHTML = data['score'];
-    document.getElementById("score-bar").innerHTML = data['score']+'%';
-    $('#score-bar').outerWidth(data['score']+'%')
+    //document.getElementById("cerf-score").innerHTML = data['score'];
+    //document.getElementById("score-bar").innerHTML = data['score']+'%';
+    //$('#score-bar').outerWidth(data['score']+'%')
     
 
     if (data['cerf'] == 'A1'){
