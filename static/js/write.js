@@ -1,5 +1,28 @@
 $(".functionall").hide()
 
+$(document).ready(function() {
+
+  if($("#search")[0].innerText == "\n") {
+    $("#search")[0].innerHTML = "";
+    }
+  str = searchText();
+  if (!(str.length==0 || str == last)) {
+    spanned = false;
+    showHint();
+  }
+  var sentence = $('#search').html().replace(/<div>/gi,' ').replace(/<\/div>/gi,'').replace(/<span>/gi,' ').replace(/<\/span>/gi,'');
+  word_number = countWords(sentence)
+  document.getElementById("word_count").innerHTML =word_number+' ';
+  if (word_number>=5){
+      document.getElementById('send-aes').disabled=false;
+  }else{document.getElementById('send-aes').disabled=true;}
+  if (word_number>=5){
+      document.getElementById('try-aes').disabled=false;
+  }else{document.getElementById('try-aes').disabled=true;}
+
+  
+});
+
 
 API_URL = "http://thor.nlplab.cc:7777/write_call"
 
