@@ -1,3 +1,10 @@
+
+
+
+textarea:focus, textarea.form-control:focus, button.btn:focus, input:focus, input.form-control:focus, .form-control:focus, [contenteditable].form-control:focus {
+    box-shadow: none; !important
+  }
+
 .leftDiv {
     margin: 22px 5% 5% 5%;
 }
