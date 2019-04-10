@@ -187,18 +187,27 @@ $("#send-aes").click(function(){
     word_number = countWords(sentence)
 
     if (word_number>=30){
+        $(".writeAhead").hide()
         score_it_post(sentence);
-        $('#score-feeback').show();
+        dect_it_post(sentence);
+
+        setTimeout(function() {
+            $(".functionall").show()
+            $("#send-aes").hide()
+            $("#try-aes").show()
+            $('#score-feeback').show();
+        },3000)
+
+    }
+    else{
+        dect_it_post(sentence);
+        $(".functionall").show()
+        $(".writeAhead").hide()
+        $("#send-aes").hide()
+        $("#try-aes").show()
     }
 
-    $(".functionall").show()
-    $(".writeAhead").hide()
-
-    setTimeout(function() {
-    dect_it_post(sentence);
-    },2000)
-    $("#send-aes").hide()
-    $("#try-aes").show()
+    
 })
 
 $("#try-aes").click(function(){
