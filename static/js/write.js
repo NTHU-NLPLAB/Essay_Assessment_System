@@ -163,21 +163,6 @@ function setCaretLast() {
 }
 
 
-
-
-
-
-  
-  
-
-
-//function onKey(e) {
-//    var text = $("#search").text().trim();
-//    if (text) {
-//        get_pattern_post(text);
-//    }
-//}
-
 function renderPatternResult(data) {
     var htmlFrag = '';
     //console.log(data)
