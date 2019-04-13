@@ -27,10 +27,10 @@ function score_it_post(query){
         dataType: 'json',
         success: function (data) {
 
-            console.log('-------')
+            //console.log('-------')
             cerf_show(data)
-            console.log(data)
-            console.log('-----------')
+            //console.log(data)
+           //console.log('-----------')
         }, 
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             
@@ -114,7 +114,7 @@ function dect_it_post(query){
         dataType: 'json',
         success: function (data) {
             revise_content(data.sen_arry , data.score_arry)
-            console.log(data)
+            //console.log(data)
         }, 
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             
@@ -172,7 +172,7 @@ $("#send-aes").click(function(){
 
 
     var sentence = $("#search").text()
-    console.log(sentence)
+    //console.log(sentence)
     $("#written").show()
 
     //console.log(sentence)
