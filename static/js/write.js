@@ -2,6 +2,18 @@ $(".functionall").hide()
 
 $(document).ready(function() {
 
+	
+	
+if($("#search")[0].innerText == "\n") {
+    $("#search")[0].innerHTML = "";
+    }
+  str = searchText();
+  if (!(str.length==0 || str == last)) {
+    spanned = false;
+    showHint();
+  }
+
+
   var sentence = $('#search').html().replace(/<div>/gi,' ').replace(/<\/div>/gi,'').replace(/<span>/gi,' ').replace(/<\/span>/gi,'');
   word_number = countWords(sentence)
   document.getElementById("word_count").innerHTML =word_number+' ';
