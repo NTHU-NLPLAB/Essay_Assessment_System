@@ -289,7 +289,7 @@ $(document).on('click','.B-R',function(){
     for(i=0;i<tmp.length;i++){
         console.log(sen[5])
         if (tmp[i] == index){
-            query+='_ '
+            query+='* '
         }else{
             query+= sen[[tmp[i]]]+' '
         }

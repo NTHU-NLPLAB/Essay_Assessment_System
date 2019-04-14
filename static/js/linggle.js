@@ -12,7 +12,7 @@ function numberWithCommas(x) {
 var SearchResult = {
     currentResultTime: Date.now(),
     query: function(query) {
-       query = encodeURI(query);
+       //query = encodeURI(query);
        //escape `?` linggle operator
        query = query.replace(/\?/g, '%3F');
        //escape `/` linggle operator

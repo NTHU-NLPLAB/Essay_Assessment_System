@@ -8,24 +8,33 @@
         <link rel="stylesheet" type="text/css" href="static/css/write.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-		
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            
 
     </head>
     <body>
             <!-- Just an image -->
-        <div>
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="#">
-                    LinggleWrite
-                </a>
+            <nav class="navbar navbar-expand-sm navbar-light bg-light" style="background-color: #e3f2fd;">
+                <a class="navbar-brand" href="/">LinggleWrite</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a id="btn-feature" class="hoverable nav-link" data-toggle="modal" data-target="#feature-modal">Feature & Task Help</a> 
+                        </li>
+                    </ul>   
+                </div>
             </nav>
-        </div>
         
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="leftDiv">
@@ -188,12 +197,81 @@
                 </div>
             </div>
         </div>
+
+        <!-- Feature Modal -->
+    <div class="modal fade" id="feature-modal" tabindex="-1" role="dialog" aria-labelledby="feature-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feature-modal-title">Features</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                
+            <div class="modal-body">
+                <ul>
+                    <h4>Real-time Writing Suggestion</h4>
+                    <p>When you type or mouse over words, LinggleWrite will display related writing suggestion.  There are three types of writing suggestion : </p>
+                    <ul>
+                        <li style="padding: 10px;">Grammar pattern</li>
+                        <li style="padding: 10px;">Collocation</li>
+                        <li style="padding: 10px;">Bilingual example</li>
+                    </ul>
+                    <hr>
+                    <h4>Automated Essay Scoring</h4>
+                    <p>When you finish your essays, LinggleWrite give a CEFR level score (A1-C2) to evaluate your writing ability.</p>
+                    <table class="table">
+                            <thead>
+                                <tr><th>Level</th><th>Explanation</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><th><span class="badge C2">C2</span></th><td>Mastery or proficiency</td></tr>
+                                <tr><th><span class="badge C1">C1</span></th><td>Effective operational proficiency or advanced</td></tr>
+                                <tr><th><span class="badge B2">B2</span></th><td>Vantage or upper intermediate</td></tr>
+                                <tr><th><span class="badge B1">B1</span></th><td>Threshold or intermediate</td></tr>
+                                <tr><th><span class="badge A2">A2</span></th><td>Waystage or elementary</td></tr>
+                                <tr><th><span class="badge A1">A1</span></th><td>Breakthrough or beginner</td></tr>
+                            </tbody>
+                    </table>
+                    <hr>
+                    <h4>Sentence-level Feedback</h4>
+                        The colour of the sentences shows LinggleWrite’s opinion of the quality of each sentence. There are three types of quality.  
+                        <div style="padding: 10px;">
+                            <p class="p-sen sen-good">This seems to be a good sentence.</p>
+                            <p class="p-sen sen-notok">This sentence could maybe be improved.</p>
+                            <p class="p-sen sen-bad">There are some problems in this sentence.</p>
+                        </div>
+                    <hr>
+                    <h4>Grammatical Error Detection</h4>
+                    <p>When you submit your essay or sentence, LinggleWrite will identify potential errors in sentences. There are three types of error given by LinggleWrite :<p>
+                    <ul>
+                        <li><span class="B-II">Insert Word</span> You should add some word in here.</li>
+                        <ul><li style="padding: 10px;">I am good <span class="B-II">Insert Word </span> this sport.</li></ul>
+                        <li><span class="B-D">Delete Word </span> You should delete this word.</li>
+                        <ul><li style="padding: 10px;">We dicuss<span class="B-D">about</span> this issue.</li></ul>
+                        <li><span class="B-R">Replace Word </span> You should replace this word.</li>
+                        <ul><li style="padding: 10px;">I finish school<span class="B-R">on</span>June.</ul>
+                    </ul>
+                    <hr>
+                    <h4>Error Suggestion</h4>
+                    <p>When you click on the error word indentified by LinggleWrite, LinggleWrite search for corrective suggestions according to the context and error type.<p>
+                </ul>
+            </div>
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
             
         <script src="static/js/main.js"></script>
         <script src="static/js/linggle.js"></script>
         <script src="static/js/example.js"></script>
         <script src="static/js/search-bar.js"></script>
         <script src="static/js/write.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 
 
     </body>
