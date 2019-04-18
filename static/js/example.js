@@ -1,5 +1,5 @@
 var Example = {
-    API: 'http://thor.nlplab.cc:7777/linggle_example',
+    API: '/api/linggle_example',
     // exampleLock: false,
     initExampleBtns: function() {
       $('td.example button.btn').on('click', function(){
