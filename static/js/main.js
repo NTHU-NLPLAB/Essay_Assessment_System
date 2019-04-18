@@ -13,9 +13,9 @@ document.getElementById('send-aes').disabled=true;
 document.getElementById('try-aes').disabled=true;
 
 
-API_URL_d = "http://thor.nlplab.cc:7777/aes_dect"
-API_URL_d_sen = "http://thor.nlplab.cc:7777/dect_sen"
-API_URL_score = "http://thor.nlplab.cc:7777/aes"
+API_URL_d = "/api/aes_dect"
+API_URL_d_sen = "/api/dect_sen"
+API_URL_score = "/api/aes"
 
 function score_it_post(query){
 
