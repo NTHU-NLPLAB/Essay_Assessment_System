@@ -1,5 +1,5 @@
 
-API_URL_linggle = 'http://thor.nlplab.cc:7777/linggle_call'
+API_URL_linggle = '/api/linggle_call'
 //$('.linggle.search-result').hide();
 
 function numberWithCommas(x) {
