@@ -28,7 +28,7 @@ if($("#search")[0].innerText == "\n") {
 });
 
 
-API_URL = "http://thor.nlplab.cc:7777/write_call"
+API_URL = "/api/write_call"
 
 last = "";
 spanned = true;
