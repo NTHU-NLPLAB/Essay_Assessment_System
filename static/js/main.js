@@ -1,39 +1,62 @@
-$("#written").hide()
-
 $(document).ready(function() {
     SearchBar.init();
-  });
-const send = $("#send");
-//const aes_content = $("#write-aes");
-const aes_content = $("#search").text();
-var word_number = 0;
-$('#score-feeback').hide();
-$("#try-aes").hide()
-document.getElementById('send-aes').disabled=true;
-document.getElementById('try-aes').disabled=true;
 
+    $("#send-aes").click(function() {
+        $(this).text('Check again').prop('disabled', true);
+        $("#keep-writing").removeClass('d-none');
+        $('#score-feeback').addClass('d-none');
+        $(".writeAhead").addClass('d-none');
+        $('.col-prgress .progress-bar').css("background-color",'#e9ecef');
+
+        let sentence = $("#search").text();
+        if (countWords(sentence) >= 30)
+            score_it_post(sentence);
+
+        dect_it_post(sentence);
+
+        // TODO: loading
+        setTimeout(function() {
+            $(".functionall").removeClass('d-none');
+        }, 3000);
+
+    });
+
+    $('#feedback-dectect').on('click','.sent.erroneous', function() {
+        $('#search-bar').val('');
+        $('.linggle.search-result').addClass('d-none');
+        $('#suggest-info').text('');
+
+        sen_dect($(this).text());
+    });
+
+
+    $('#suggest-info').on('click', 'span.edit', function() {
+        let ele = $(this);
+        let index = parseInt(ele.attr('id'));
+        let err_type = ele.data('etype');
+        let start = (index > 0) ? index-1:index;
+        let end = (err_type != 'insert' && index < sent.length-1) ? index+2:index+1;
+
+        let query = sent.slice(start, end).join(' ');
+        SearchResult.query(query, err_type);
+    });
+
+});
 
 API_URL_d = "/api/aes_dect"
 API_URL_d_sen = "/api/dect_sen"
 API_URL_score = "/api/aes"
 
-function score_it_post(query){
+let sent = [];
 
-    
+function score_it_post(query){
     $.ajax({
         type: "POST",
         url: API_URL_score,
         data: JSON.stringify({courpus: query}),
         dataType: 'json',
-        success: function (data) {
-
-            //console.log('-------')
-            cerf_show(data)
-            //console.log(data)
-           //console.log('-----------')
-        }, 
+        success: cerf_show, 
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
-            
             console.log("Status: " + textStatus); 
             console.log("Error: " + errorThrown); 
         } 
@@ -41,100 +64,40 @@ function score_it_post(query){
 }
 
 function cerf_show(data){
-    document.getElementById("cerf-leve").innerHTML = data['cerf'];
-    //document.getElementById("cerf-score").innerHTML = data['score'];
-    //document.getElementById("score-bar").innerHTML = data['score']+'%';
-    //$('#score-bar').outerWidth(data['score']+'%')
-    
-
-    if (data['cerf'] == 'A1'){
-        
-        $('#a2').css("background-color",'#e9ecef');
-        $('#b1').css("background-color",'#e9ecef');
-        $('#b2').css("background-color",'#e9ecef');
-        $('#c1').css("background-color",'#e9ecef');
-        $('#c2').css("background-color",'#e9ecef');
-
-    }
-    else if(data['cerf'] == 'A2'){
-
-        $('#a1').css("background-color",'#e9ecef');
-        $('#b1').css("background-color",'#e9ecef');
-        $('#b2').css("background-color",'#e9ecef');
-        $('#c1').css("background-color",'#e9ecef');
-        $('#c2').css("background-color",'#e9ecef');
-    
-    }
-    else if(data['cerf'] == 'B1'){
-        
-        $('#b2').css("background-color",'#e9ecef');
-        $('#c1').css("background-color",'#e9ecef');
-        $('#c2').css("background-color",'#e9ecef');
-        $('#a1').css("background-color",'#e9ecef');
-        $('#a2').css("background-color",'#e9ecef');
-
-
-    }
-    else if(data['cerf'] == 'B2'){
-        
-        $('#b1').css("background-color",'#e9ecef');
-        $('#c1').css("background-color",'#e9ecef');
-        $('#c2').css("background-color",'#e9ecef');
-        $('#a1').css("background-color",'#e9ecef');
-        $('#a2').css("background-color",'#e9ecef');
-
-    }
-    else if(data['cerf'] == 'C1'){
-        $('#b2').css("background-color",'#e9ecef');
-        $('#b1').css("background-color",'#e9ecef');
-        $('#c2').css("background-color",'#e9ecef');
-        $('#a1').css("background-color",'#e9ecef');
-        $('#a2').css("background-color",'#e9ecef');
-    }
-    else if(data['cerf'] == 'C2'){
-        $('#b2').css("background-color",'#e9ecef');
-        $('#b1').css("background-color",'#e9ecef');
-        $('#c1').css("background-color",'#e9ecef');
-        $('#a1').css("background-color",'#e9ecef');
-        $('#a2').css("background-color",'#e9ecef');
-    }
-
-    $('#score-feeback').show();
-
+    $("#cerf-leve").text(data.cerf);
+    $(`.col-prgress .progress-bar:not(#${data.cerf.toLowerCase()})`).css("background-color",'#e9ecef');
+    $(`.col-prgress .progress-bar#${data.cerf.toLowerCase()}`).css("background-color",'#17a2b8');
+    $('#score-feeback').removeClass('d-none');
 }
 
 
-
 function dect_it_post(query){
-    
     $.ajax({
         type: "POST",
         url: API_URL_d,
+        // TODO: typo `courpus`
         data: JSON.stringify({courpus: query}),
         dataType: 'json',
         success: function (data) {
-            revise_content(data.sen_arry , data.score_arry)
-            //console.log(data)
+            revise_content(data.sen_arry , data.score_arry);
         }, 
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
-            
             console.log("Status: " + textStatus); 
             console.log("Error: " + errorThrown); 
-        } 
+        },
+        complete: () => {$('#send-aes').prop('disabled', false);}
     })
 }
 
 
 function sen_dect(query){
-    
     $.ajax({
         type: "POST",
         url: API_URL_d_sen,
         data: JSON.stringify({courpus: query}),
         dataType: 'json',
         success: function (data) {
-            revise_sentence(data.sen_arry , data.tag_arry)
-            console.log(data)
+            revise_sentence(data.sen_arry, data.tag_arry)
         }, 
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             
@@ -144,162 +107,41 @@ function sen_dect(query){
     })
 }
 
-function revise_content(data , score){
-    $('#suggest-info').show();
-    var content = ''
-    for(i=0;i<data.length;i++){
-        s = data[i].join(' ').replace(' ,',',').replace(' .','.').replace(' ?','?')
-        
-        grade = score[i]
-        if (grade > 0.0 && grade < 0.15){
-            content += '<span class="sen-notok"'+'id='+i +'>'+' '+s+'</span>'
-        }
-        else if(grade >= 0.15){
-            content += '<span class="sen-bad"'+'id='+i+'>'+' '+s+'</span>'
-        }
-        else {
-            content += ' '+s
-        }
-        
-    }
-    document.getElementById('feedback-dectect').innerHTML =content;
-    $('#feedback-dectect').show();
+function revise_content(data, scores){
+    $('#suggest-info').removeClass('d-none');
+    let content = data.map((tokens, sent_no) => {
+        let score = scores[sent_no];
+        let sent = detokenize(tokens.join(' '));
+        if (score >= 0.15) return `<span class="sent erroneous sen-bad"> ${sent}</span>`;
+        else if (score > 0.0) return `<span class="sent erroneous sen-notok"> ${sent}</span>`;
+        else return sent
+    }).join(' ');
+    $('#feedback-dectect').html(content).removeClass('d-none');
 }
 
-$("#send-aes").click(function(){
-
-    //var sentence = $('#search').html().replace(/<div>/gi,' ').replace(/<\/div>/gi,'').replace(/<span>/gi,' ').replace(/<\/span>/gi,'');
-
-
-    var sentence = $("#search").text()
-    //console.log(sentence)
-    $("#written").show()
-
-    //console.log(sentence)
-
-    $('#score-feeback').hide();
-    $('#a1').css("background-color",'#17a2b8');
-    $('#a2').css("background-color",'#17a2b8');
-    $('#b1').css("background-color",'#17a2b8');
-    $('#b2').css("background-color",'#17a2b8');
-    $('#c1').css("background-color",'#17a2b8');
-    $('#c2').css("background-color",'#17a2b8');
-    word_number = countWords(sentence)
-
-    if (word_number>=30){
-        $(".writeAhead").hide()
-        score_it_post(sentence);
-        dect_it_post(sentence);
-
-        setTimeout(function() {
-            $(".functionall").show()
-            $("#send-aes").hide()
-            $("#try-aes").show()
-            $('#score-feeback').show();
-        },3000)
-
-    }
-    else{
-        dect_it_post(sentence);
-        $(".functionall").show()
-        $(".writeAhead").hide()
-        $("#send-aes").hide()
-        $("#try-aes").show()
-    }
-
-    
-})
-
-$("#try-aes").click(function(){
-    var sentence = $("#search").text()
-    $('#score-feeback').hide();
-    $('.linggle.search-result').hide()
-    $("#try-aes").hide()
-    $('#feedback-dectect').hide();
-    $('.linggle search-result').hide();
-    $('#suggest-info').hide();
-    $('#search-bar').val('')
-    $('#suggest-info').val('');
-    if (word_number>=30){
-        score_it_post(sentence);
-        $('#score-feeback').show();
-    }
-    
-    setTimeout(function() {
-    dect_it_post(sentence);
-    } , 2000)
-    $("#send-aes").show()
-
-})
+function detokenize(text) {
+    return text.replace(' ,',',').replace(' .','.').replace(' ?','?');
+}
 
 
+function revise_sentence(data, tag_token) {
+    sent = data[0];
+    let tag = tag_token[0];
+    let content = '';
 
-
-// $('.linggle.search-result').hide()
-
-$(document).on('click','.sen-notok',function(){
-    //$('#suggest-info').show();
-    $('#search-bar').val(' ')
-    $('.linggle.search-result').hide()
-    $('.linggle search-result').val('')
-    // code here
-    //var tag = $('.sen-notok').html();
-    document.getElementById('suggest-info').innerHTML = ''
-    console.log($(this))
-    look_data = $(this).text()
-    //document.getElementById('suggest-info').innerHTML =look_data;
-    sen_dect(look_data)
-
-
-});
-
-$(document).on('click','.sen-bad',function(){
-    $('#search-bar').val('')
-    $('.linggle.search-result').hide()
-
-    // code here
-    //var tag = $('.sen-notok').html();
-    document.getElementById('suggest-info').innerHTML = ''
-    //$('.linggle.search-result').show()
-    console.log($(this))
-    look_data = $(this).text()
-    //document.getElementById('suggest-info').innerHTML =look_data;
-    sen_dect(look_data)
-
-});
-
-$('#suggest-info').on('click', 'span.edit', function() {
-    let ele = $(this);
-    let index = parseInt(ele.attr('id'));
-    let err_type = ele.data('etype');
-    let start = (index > 0) ? index-1:index;
-    let end = (err_type != 'insert' && index < sen.length-1) ? index+2:index+1;
-
-    let query = sen.slice(start, end).join(' ');
-
-    SearchResult.query(query, err_type);
-});
-
-
-var sen = [];
-var tag = [];
-function revise_sentence(data , tag_token){
-    sen = data[0]
-    tag = tag_token[0]
-    var content = '<div>'
-
-    for(i=0;i<sen.length;i++){
+    for(i=0;i<sent.length;i++){
         if (tag[i] == 'O')
-            content += ' '+sen[i];
+            content += ' '+sent[i];
         else if(tag[i] == 'B-I')
-            content += ` <span class="${tag[i]} edit" id=${i} data-etype="insert">Insert Word</span> ${sen[i]}`;
+            content += ` <span class="${tag[i]} edit text-nowrap" id=${i} data-etype="insert"> Insert Word </span> ${sent[i]}`;
         else if (tag[i]=='B-R')
-            content += ` <span class="${tag[i]} edit" id=${i} data-etype="replace">${sen[i]}</span>`;
+            content += ` <span class="${tag[i]} edit text-nowrap" id=${i} data-etype="replace">${sent[i]}</span>`;
         else if (tag[i]=='B-D')
-            content += ` <span class="${tag[i]} edit" id=${i} data-etype="delete">${sen[i]}</span>`;
+            content += ` <span class="${tag[i]} edit text-nowrap" id=${i} data-etype="delete">${sent[i]}</span>`;
     }
-    content+='</div>'
-    document.getElementById('suggest-info').innerHTML =content.replace(' ,',',').replace(' .','.');
+
+    content = detokenize(content.replace(' ,', ',').replace(' .', '.'));
+    $('#suggest-info').html(content);
 }
 
 

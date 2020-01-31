@@ -39,7 +39,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="leftDiv">
                 <div class="texth4"><h4>Input Essay</h4></div>
-                <div class='text-body'>
+                <div class="text-body">
                     <div >
 			    
 			<div contenteditable="true" id="search"><span>Dear</span><span>&nbsp;Helen</span><span>&nbsp;Ryan,</span><span>&nbsp;<br>I</span><span>&nbsp;received</span><span>&nbsp;your</span><span>&nbsp;letter,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;writing</span><span>&nbsp;to</span><span>&nbsp;you</span><span>&nbsp;to</span><span>&nbsp;give</span><span>&nbsp;you</span><span>&nbsp;some</span><span>&nbsp;informations</span><span>&nbsp;about</span><span>&nbsp;me.</span><span>&nbsp;<br>I</span><span>&nbsp;would</span><span>&nbsp;like</span><span>&nbsp;to</span><span>&nbsp;travel</span><span>&nbsp;on</span><span>&nbsp;July</span><span>&nbsp;because</span><span>&nbsp;I</span><span>&nbsp;finish</span><span>&nbsp;school</span><span>&nbsp;on</span><span>&nbsp;June</span><span>&nbsp;and</span><span>&nbsp;I</span><span>&nbsp;go</span><span>&nbsp;to</span><span>&nbsp;the</span><span>&nbsp;Great</span><span>&nbsp;Britain</span><span>&nbsp;August</span><span>&nbsp;for</span><span>&nbsp;one</span><span>&nbsp;month.</span><span>&nbsp;<br>If</span><span>&nbsp;I</span><span>&nbsp;can</span><span>&nbsp;choose</span><span>&nbsp;my</span><span>&nbsp;accommodation,</span><span>&nbsp;I</span><span>&nbsp;prefer</span><span>&nbsp;staying</span><span>&nbsp;in</span><span>&nbsp;tent.</span><span>&nbsp;<br>I</span><span>&nbsp;prefer</span><span>&nbsp;to</span><span>&nbsp;this</span><span>&nbsp;accommodation</span><span>&nbsp;because</span><span>&nbsp;I</span><span>&nbsp;think</span><span>&nbsp;it's</span><span>&nbsp;easier</span><span>&nbsp;to</span><span>&nbsp;near</span><span>&nbsp;them,</span><span>&nbsp;than</span><span>&nbsp;when</span><span>&nbsp;you</span><span>&nbsp;stay</span><span>&nbsp;a</span><span>&nbsp;log</span><span>&nbsp;cabin.</span><span>&nbsp;<br>I</span><span>&nbsp;want</span><span>&nbsp;to</span><span>&nbsp;play</span><span>&nbsp;tennis</span><span>&nbsp;and</span><span>&nbsp;go</span><span>&nbsp;to</span><span>&nbsp;swimming.</span><span>&nbsp;<br>I</span><span>&nbsp;haven't</span><span>&nbsp;played</span><span>&nbsp;tennis</span><span>&nbsp;before,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;not</span><span>&nbsp;good.</span><span>&nbsp;<br>I</span><span>&nbsp;go</span><span>&nbsp;the</span><span>&nbsp;swimming</span><span>&nbsp;pool</span><span>&nbsp;two</span><span>&nbsp;time</span><span>&nbsp;a</span><span>&nbsp;week,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;good</span><span>&nbsp;this</span><span>&nbsp;sport.</span><span>&nbsp;<br>Could</span><span>&nbsp;you</span><span>&nbsp;tell</span><span>&nbsp;me</span><span>&nbsp;what</span><span>&nbsp;sort</span><span>&nbsp;of</span><span>&nbsp;clothes</span><span>&nbsp;I</span><span>&nbsp;will</span><span>&nbsp;have</span><span>&nbsp;to</span><span>&nbsp;wear</span><span>&nbsp;to</span><span>&nbsp;play</span><span>&nbsp;tennis?</span><span>&nbsp;<br>Could</span><span>&nbsp;you</span><span>&nbsp;tell</span><span>&nbsp;me</span><span>&nbsp;if</span><span>&nbsp;I</span><span>&nbsp;will</span><span>&nbsp;need</span><span>&nbsp;money</span><span>&nbsp;for</span><span>&nbsp;</span><span>&nbsp;my</span><span>&nbsp;dinners?</span><span>&nbsp;<br>Yours</span><span>&nbsp;sincerely,</span><span>&nbsp;<br>Eric</span><span>&nbsp;Durand</span><span>&nbsp;</span></div>
@@ -47,24 +47,15 @@
                               
                         </div>
 
-                            <div class="alert alert-primary" role="alert" id='inalert'>
-                                    <a href="#" class="alert-link" id='word_count'>0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Function AES will carry out.)
+                            <div class="alert alert-primary" role="alert" id="inalert">
+                                    <a href="#" class="alert-link" id="word_count">0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Function AES will carry out.)
                             </div>
-                        
-                    <!--
-                    <div class="form-group shadow-textarea">
-                        <textarea class="form-control z-depth-1" for="exampleFormControlTextarea6" rows="18" placeholder="Write something here..." id='write-aes'></textarea>
-                        <div class="alert alert-primary" role="alert" id='inalert'>
-                            <a href="#" class="alert-link" id='word_count'>0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Function AES will carry out.)
-                        </div>
-                    </div>
-                    -->
                     <div class="row">
                         <div class="col-sen-toop">
                             <div class="card">
                             <div class="card-body-sen">
                                 <h5 class="card-title-sen p-sen text-center">Sentence-level feedback</h5>
-                                <div class='p-sens'>
+                                <div class="p-sens">
                                 <p class="p-sen sen-good">This seems to be a good sentence.</p>
                                 <p class="p-sen sen-notok">This sentence could maybe be improved.</p>
                                 <p class="p-sen sen-bad">There are some problems in this sentence.</p>
@@ -73,9 +64,8 @@
                             </div>
                         </div>
                         <div class="col-button">
-                            <button type="button" class="btn btn-outline-primary btn-lg float-right" id="send-aes">check</button>
-                            <button type="button" class="btn btn-outline-primary btn-lg float-right" id="try-aes">check again</button>
-                            <button type="button" class="btn btn-outline-primary btn-lg float-right" id="written">Keep writing</button>
+                            <button type="button" class="btn btn-outline-primary btn-lg float-right" id="send-aes" disabled>Check</button>
+                            <button type="button" class="btn btn-outline-primary btn-lg float-right d-none" id="keep-writing">Keep writing</button>
                         </div>
                     </div>
             </div>
@@ -83,30 +73,29 @@
 
 
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="rightDiv">
-
-
-            <div class='writeAhead'>
-                <div class="card" id='card1'>
+            <div class="writeAhead">
+                <div class="card" id="card1">
                     <div class="card1-title text-center">
-                        <h5 class="col-12" id='first-word'>Interactive Writing Environment</h5>
+                        <h5 class="col-12" id="first-word">Interactive Writing Environment</h5>
                     </div>
                     <div class="card-body">
+                        <h5 class="card-subtitle mb-2 text-muted text-center pattern-headword"></h5>
                         <div class="pattern-area"></div>
                     </div>
                 </div>
             </div>
        
-            <div class='functionall'>
-                <div class="card" id='card1'>
-                    <div class="card1-title ">
-                        <h5 class="col-12" id='first-word'>
+            <div class="functionall d-none">
+                <div class="card" id="card1">
+                    <div class="card1-title">
+                        <h5 class="col-12" id="first-word">
                             Task Help
-                            <button id ='help' type="button" class="btn text-center button4" data-toggle="modal" data-target="#exampleModalLong">
+                            <button id="help" type="button" class="btn text-center button4" data-toggle="modal" data-target="#exampleModalLong">
                                 Help
                             </button>
                         </h5>
                     </div>
-                    <div id ='score-feeback' class="card-body">
+                    <div id="score-feeback" class="card-body d-none">
                         <div class="row">
                             <div class="col-specail">
                                 <div class="list-group">
@@ -117,25 +106,25 @@
                                 </div>
                             </div>
                             <div class="col-score">
-                                <div class="list-group"id='score-border'>
+                                <div class="list-group"id="score-border">
                                     <a class="list-group-item text-center"><div id="cerf-leve"></div></a>
                                     <!--
-                                    <a class="list-group-item text-center"><div id='cerf-score'></div></a>
+                                    <a class="list-group-item text-center"><div id="cerf-score"></div></a>
                                     -->
                                 </div>
                             </div>
                             <div class="col-prgress">
                                 <div class="progress" style="height: 25px;">
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='a1'>A1</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='a2'>A2</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='b1'>B1</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='b2'>B2</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id='c1'>C1</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center " role="progressbar" style="width: 16.6%" id='c2'>C2</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="a1">A1</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="a2">A2</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="b1">B1</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="b2">B2</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="c1">C1</div>
+                                    <div  class="progress-bar progress-bar-striped  text-center " role="progressbar" style="width: 16.6%" id="c2">C2</div>
                                 </div>
                                 <!--
-                                <div class="progress" style="height: 25px;" id='score_1'>
-                                    <div id='score-bar' class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%">70%</div>
+                                <div class="progress" style="height: 25px;" id="score_1">
+                                    <div id="score-bar" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%">70%</div>
                                 </div>
                                 -->
                             </div>   
@@ -143,22 +132,27 @@
                     </div>       
                 </div>
                     
-                <div class="card" id='card2'>
+                <div class="card" id="card2">
                     <div class="card1-title ">
-                        <h5 class="col-12" id='first-word'>Dectection</h5>
+                        <h5 class="col-12" id="first-word">Detection</h5>
                     </div>
-                    <div class="card-body" id='feedback-dectect'>
+                    <div class="card-body" id="feedback-dectect">
                         
                     </div>
                 </div>
-                <div class="card" id='card3'>
+                <div class="card" id="card3">
                     <div class="card1-title ">
                         <span>
-                            <h5 class="col-12" id='first-word'>Suggestion<h8 class="col-12" style="padding-left:3em">&nbsp;</h8><h8 class="col-12 B-I" id='second-word'>Insert word</h8><h8 class="col-12 B-D" id='second-word'>Delete word</h8><h8 class="col-12 B-R" id='second-word'>Replace word</h8></h5>
+                            <h5 class="col-12" id="first-word">Suggestion
+                                <h8 class="col-12 text-nowrap" style="padding-left:3em">&nbsp;</h8>
+                                <h8 class="col-12 B-I text-nowrap" id="second-word">Insert word</h8>
+                                <h8 class="col-12 B-D text-nowrap" id="second-word">Delete word</h8>
+                                <h8 class="col-12 B-R text-nowrap" id="second-word">Replace word</h8>
+                            </h5>
                         <span>
                     </div>
                     <div class="card-body">
-                        <div id='suggest-info'></div>
+                        <div id="suggest-info"></div>
                         <form class="navbar-form navbar-left">
                                 <div class="form-group">
                                 <!-- search -->
@@ -246,11 +240,11 @@
                     <h4>Grammatical Error Detection</h4>
                     <p>When you submit your essay or sentence, LinggleWrite will identify potential errors in sentences. There are three types of error given by LinggleWrite :<p>
                     <ul>
-                        <li><span class="B-II">Insert Word</span> You should add some word in here.</li>
+                        <li><span class="B-II text-nowrap">Insert Word</span> You should add some word in here.</li>
                         <ul><li style="padding: 10px;">I am good <span class="B-II">Insert Word </span> this sport.</li></ul>
-                        <li><span class="B-D">Delete Word </span> You should delete this word.</li>
+                        <li><span class="B-D text-nowrap">Delete Word </span> You should delete this word.</li>
                         <ul><li style="padding: 10px;">We dicuss <span class="B-D">about</span> this issue.</li></ul>
-                        <li><span class="B-R">Replace Word </span> You should replace this word.</li>
+                        <li><span class="B-R text-nowrap">Replace Word </span> You should replace this word.</li>
                         <ul><li style="padding: 10px;">I finish school <span class="B-R">on</span> June.</ul>
                     </ul>
                     <hr>
