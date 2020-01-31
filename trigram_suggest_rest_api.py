@@ -14,7 +14,7 @@ def gen_replace_query(word):
         # check forms
         return '_'
     else:
-        return '/'.join(spell.suggest(word))
+        return '/'.join(spell.suggest(word)).replace(' ', '_')
 
 
 @app.get("/{ngramstr}", response_class=UJSONResponse)
