@@ -14,6 +14,8 @@ def gen_replace_query(word):
         # check forms
         return '_'
     else:
+        # TODO: this is a temporary workaround
+        # shoud search for multi-word as well
         return '/'.join(spell.suggest(word)).replace(' ', '_')
 
 
@@ -31,4 +33,6 @@ def check_ngram(ngramstr: str, err_type: str = None):
         res = linggle.query(cmd)._asdict()
     else:
         res = linggle.query(ngramstr)._asdict()
+    # TODO: this is just a temporary workaround
+    res['query'] = res['query'].replace('@', '/')
     return res
