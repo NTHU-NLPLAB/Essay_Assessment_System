@@ -1,28 +1,17 @@
-
-API_URL_linggle = '/api/linggle_call'
+API_URL_suggest = '/suggest/'
 //$('.linggle.search-result').hide();
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-
-
-
 var SearchResult = {
     currentResultTime: Date.now(),
-    query: function(query) {
-       //query = encodeURI(query);
-       //escape `?` linggle operator
-       query = query.replace(/\?/g, '%3F');
-       //escape `/` linggle operator
-       query = query.replace(/\//g , '@');
+    query: function(query, err_type) {
        console.log(query)
       $.ajax({
-          url: API_URL_linggle,
-          type: 'POST',
-          data: query,
-          dataType: 'json',
+          url: API_URL_suggest+encodeURI(query),
+          data: {err_type: err_type},
       })
       .done(this.renderSearchResult)
       .fail(this.renderSearchFail);
@@ -31,18 +20,18 @@ var SearchResult = {
   
     renderSearchResult: function(data) {
       //console.log(data)
-        if (data.ngrams.length > 0) {
-            $('.linggle.search-result tbody').html(data.ngrams.map(function(ngramData) {
-            var ngram = ngramData[0];
-            var count = ngramData[1];
-            var percent = Math.round(count/data.total * 1000) / 10;
-            return SearchResult.renderNgramRowHtml(ngram, count, percent);
-            }).join(''));
-            Example.initExampleBtns();
-        } else {
-            $('.linggle.search-result tbody').html('<tr><td colspan=4>No result</td></tr>');
-        }
-      
+      $('#search-bar').val(data.query);
+      if (data.ngrams.length > 0) {
+          $('.linggle.search-result tbody').html(data.ngrams.map(function(ngramData) {
+          var ngram = ngramData[0];
+          var count = ngramData[1];
+          var percent = Math.round(count/data.total * 1000) / 10;
+          return SearchResult.renderNgramRowHtml(ngram, count, percent);
+          }).join(''));
+          Example.initExampleBtns();
+      } else {
+          $('.linggle.search-result tbody').html('<tr><td colspan=4>No result</td></tr>');
+      }
     },
   
     renderNgramRowHtml: function(ngram, count, percent) {
