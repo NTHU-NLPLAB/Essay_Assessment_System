@@ -235,7 +235,7 @@ $("#try-aes").click(function(){
 
 
 
-$('.linggle.search-result').hide()
+// $('.linggle.search-result').hide()
 
 $(document).on('click','.sen-notok',function(){
     //$('#suggest-info').show();
@@ -254,11 +254,9 @@ $(document).on('click','.sen-notok',function(){
 });
 
 $(document).on('click','.sen-bad',function(){
-    $('#search-bar').val(' ')
+    $('#search-bar').val('')
     $('.linggle.search-result').hide()
-    $('.linggle search-result').val('')
 
-    //$('.linggle.search-result').hide()
     // code here
     //var tag = $('.sen-notok').html();
     document.getElementById('suggest-info').innerHTML = ''
@@ -270,109 +268,17 @@ $(document).on('click','.sen-bad',function(){
 
 });
 
-$(document).on('click','.B-R',function(){
-    
-    //$('.linggle.search-result').hide()
-    index = $(this).attr('id')
-    console.log(sen , tag)
-    var query = ''
-    var tmp = []
-    index_arry = [parseInt(index)-1 , parseInt(index) , parseInt(index)+1]
-    console.log(index_arry)
-    console.log('-----')
-    
-    for(i=0;i<index_arry.length;i++){
-        if (index_arry[i] > 0 && index_arry[i] < tag.length+1){
-            tmp.push(index_arry[i])
-        }
-    }
-    for(i=0;i<tmp.length;i++){
-        console.log(sen[5])
-        if (tmp[i] == index){
-            query+='* '
-        }else{
-            query+= sen[[tmp[i]]]+' '
-        }
-    }
-    //linggle_it_post(query)
-    SearchResult.query(query);
-    var searchBar = $('#search-bar');
-    searchBar.val(query)
-    $('.linggle.search-result').show()
-    
+$('#suggest-info').on('click', 'span.edit', function() {
+    let ele = $(this);
+    let index = parseInt(ele.attr('id'));
+    let err_type = ele.data('etype');
+    let start = (index > 0) ? index-1:index;
+    let end = (err_type != 'insert' && index < sen.length-1) ? index+2:index+1;
 
+    let query = sen.slice(start, end).join(' ');
+
+    SearchResult.query(query, err_type);
 });
-
-
-$(document).on('click','.B-D',function(){
-    
-    index = $(this).attr('id')
-    console.log(sen , tag)
-    var query = ''
-    var tmp = []
-    index_arry = [parseInt(index)-1 , parseInt(index) , parseInt(index)+1]
-    console.log(index_arry)
-    console.log('-----')
-    
-    for(i=0;i<index_arry.length;i++){
-        if (index_arry[i] > 0 && index_arry[i] < tag.length+1){
-            tmp.push(index_arry[i])
-        }
-    }
-    for(i=0;i<tmp.length;i++){
-        //console.log(sen[5])
-        if (tmp[i] == index){
-            query+='?'+ sen[tmp[i]]+' '
-        }else{
-            query+= sen[[tmp[i]]]+' '
-        }
-    }
-    //linggle_it_post(query)
-    //console.log(query);
-    SearchResult.query(query);
-    var searchBar = $('#search-bar');
-    searchBar.val(query)
-    $('.linggle.search-result').show()
-    
-
-});
-
-$(document).on('click','.B-II',function(){
-    
-    //$('.linggle.search-result').hide()
-    index = $(this).attr('id')
-    console.log(sen , tag)
-    var query = ''
-    var tmp = []
-    index_arry = [parseInt(index)-1 , parseInt(index)]
-    console.log(index_arry)
-    console.log('-----')
-    
-    for(i=0;i<index_arry.length;i++){
-        if (index_arry[i] > 0 && index_arry[i] < tag.length+1){
-            tmp.push(index_arry[i])
-        }
-    }
-    console.log(tmp)
-    for(i=0;i<tmp.length;i++){
-        console.log(sen[5])
-        if (tmp[i] == index){
-            query+='_ '+ sen[[tmp[i]]]+' '
-        }else{
-            query+= sen[[tmp[i]]]+' '
-        }
-    }
-    SearchResult.query(query);
-    var searchBar = $('#search-bar');
-    searchBar.val(query)
-    $('.linggle.search-result').show()
-
-});
-
-
-
-
-
 
 
 var sen = [];
@@ -381,24 +287,16 @@ function revise_sentence(data , tag_token){
     sen = data[0]
     tag = tag_token[0]
     var content = '<div>'
+
     for(i=0;i<sen.length;i++){
-        
-        if (tag[i] == 'O'){
-            content += ' '+sen[i]
-        }
-        else if(tag[i] == 'B-I'){
-            //add = '<button type="button" class="btn btn-warning" id="B-I">Insert</button>'
-            add = ' '+'<span class="B-II"'+'id='+i+'>'+'Insert Word '+'</span>'
-            content += add + sen[i]
-            //content += ' '+add+sen[i]+'</span>'
-        }
-        else if (tag[i]=='B-R') {
-          //replace = '<button type="button" class="btn btn-success" id="B-R">Replace</button>'
-            content += ' '+'<span class="B-R"'+'id='+i+'>'+sen[i]+'</span>'
-        }
-        else if (tag[i]=='B-D') {
-            content += ' '+'<span class="B-D"'+'id='+i+'>'+sen[i]+'</span>'
-        }
+        if (tag[i] == 'O')
+            content += ' '+sen[i];
+        else if(tag[i] == 'B-I')
+            content += ` <span class="${tag[i]} edit" id=${i} data-etype="insert">Insert Word</span> ${sen[i]}`;
+        else if (tag[i]=='B-R')
+            content += ` <span class="${tag[i]} edit" id=${i} data-etype="replace">${sen[i]}</span>`;
+        else if (tag[i]=='B-D')
+            content += ` <span class="${tag[i]} edit" id=${i} data-etype="delete">${sen[i]}</span>`;
     }
     content+='</div>'
     document.getElementById('suggest-info').innerHTML =content.replace(' ,',',').replace(' .','.');
