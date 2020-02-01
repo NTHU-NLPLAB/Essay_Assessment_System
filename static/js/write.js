@@ -60,7 +60,7 @@ function onTextAreaInput() {
 function updateTextArea() {
   let sentence = $('#search').html().replace(/<div>/gi,' ').replace(/<\/div>/gi,'').replace(/<span>/gi,' ').replace(/<\/span>/gi,'');
   let length = countWords(sentence);
-  $('#word_count').text(`${length} `);
+  $('#word_count').text(length);
   $('#send-aes').prop('disabled', !(length>=5));
 }
 
