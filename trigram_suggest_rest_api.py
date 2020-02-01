@@ -29,7 +29,7 @@ def check_ngram(ngramstr: str, err_type: str = None):
         ngram[1] = '?' + ngram[1]
         res = linggle.query(' '.join(ngram))._asdict()
     elif err_type == 'insert':
-        cmd = ' '.join((ngram[0], '_', ngram[1]))
+        cmd = ' '.join((ngram[0], '?_', ngram[1]))
         res = linggle.query(cmd)._asdict()
     else:
         res = linggle.query(ngramstr)._asdict()
