@@ -131,5 +131,5 @@ function renderPatternResult(data) {
                     `;
     });
     $('.pattern-area').html(htmlFrag);
-    $('.pattern-headword').text(data.headword.toUpperCase());
+    $('.pattern-headword').text(data.headword);
 }
