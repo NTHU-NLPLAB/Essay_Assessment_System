@@ -7,7 +7,7 @@ let SearchResult = {
         // TODO: add loading
         // $('.linggle.search-result').addClass('d-none');
         $.ajax({
-            url: API_URL_suggest+encodeURI(query),
+            url: API_URL_suggest+encodeURIComponent(query),
             data: {err_type: err_type},
         })
         .done(this.renderSearchResult)
