@@ -81,22 +81,6 @@ textarea:focus, textarea.form-control:focus, button.btn:focus, input:focus, inpu
     padding: 0.15rem;
 }
 
-
-#card1{
-    position: relative;
-    top : 9px
-}
-#card2{
-    position: relative;
-    top : 15px
-}
-
-
-
-#card3{
-    position: relative;
-    top : 21px
-}
 .col-specail{
     position: relative;
     width: 25%;

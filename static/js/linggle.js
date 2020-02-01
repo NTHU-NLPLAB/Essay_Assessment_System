@@ -1,10 +1,6 @@
 API_URL_suggest = '/suggest/'
 
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-var SearchResult = {
+let SearchResult = {
     currentResultTime: Date.now(),
     query: function(query, err_type) {
         console.log(query)
@@ -61,4 +57,7 @@ var SearchResult = {
         </tr>`;
     },
 };
-  
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

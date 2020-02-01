@@ -2,23 +2,19 @@ $(document).ready(function() {
     SearchBar.init();
 
     $("#send-aes").click(function() {
-        $(this).text('Check again').prop('disabled', true);
+        $(this).removeClass('btn-lg').text('Check again').prop('disabled', true);
         $("#keep-writing").removeClass('d-none');
         $('#score-feeback').addClass('d-none');
-        $(".writeAhead").addClass('d-none');
-        $('.col-prgress .progress-bar').css("background-color",'#e9ecef');
+        $('.writeAhead').addClass('d-none');
+        $('.functionall').removeClass('d-none');
+
+        $('.score.prgress .progress-bar').css("background-color",'#e9ecef');
 
         let sentence = $("#search").text();
         if (countWords(sentence) >= 30)
             score_it_post(sentence);
 
         dect_it_post(sentence);
-
-        // TODO: loading
-        setTimeout(function() {
-            $(".functionall").removeClass('d-none');
-        }, 3000);
-
     });
 
     $('#feedback-dectect').on('click','.sent.erroneous', function() {
@@ -43,9 +39,10 @@ $(document).ready(function() {
 
 });
 
-API_URL_d = "/api/aes_dect"
-API_URL_d_sen = "/api/dect_sen"
-API_URL_score = "/api/aes"
+API_URL_d = "/api/aes_dect";
+API_URL_d_sen = "/api/dect_sen";
+API_URL_score = "/api/aes";
+LOADING_HTML = '<div class="d-flex justify-content-center"><div class="spinner-grow text-secondary" role="status"><span class="sr-only">Loading...</span></div></div>';
 
 let sent = [];
 
@@ -59,19 +56,20 @@ function score_it_post(query){
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             console.log("Status: " + textStatus); 
             console.log("Error: " + errorThrown); 
-        } 
-    })
+        }
+    });
 }
 
 function cerf_show(data){
     $("#cerf-leve").text(data.cerf);
-    $(`.col-prgress .progress-bar:not(#${data.cerf.toLowerCase()})`).css("background-color",'#e9ecef');
-    $(`.col-prgress .progress-bar#${data.cerf.toLowerCase()}`).css("background-color",'#17a2b8');
+    $(`.score.progress .progress-bar:not(#${data.cerf.toLowerCase()})`).css("background-color",'#e9ecef');
+    $(`.score.progress .progress-bar#${data.cerf.toLowerCase()}`).css("background-color",'#17a2b8');
     $('#score-feeback').removeClass('d-none');
 }
 
 
 function dect_it_post(query){
+    $('#feedback-dectect').html(LOADING_HTML);
     $.ajax({
         type: "POST",
         url: API_URL_d,
@@ -86,11 +84,11 @@ function dect_it_post(query){
             console.log("Error: " + errorThrown); 
         },
         complete: () => {$('#send-aes').prop('disabled', false);}
-    })
+    });
 }
 
-
 function sen_dect(query){
+    $('#suggest-info').html(LOADING_HTML);
     $.ajax({
         type: "POST",
         url: API_URL_d_sen,
@@ -99,12 +97,11 @@ function sen_dect(query){
         success: function (data) {
             revise_sentence(data.sen_arry, data.tag_arry)
         }, 
-        error: function(XMLHttpRequest, textStatus, errorThrown) { 
-            
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus); 
             console.log("Error: " + errorThrown); 
         } 
-    })
+    });
 }
 
 function revise_content(data, scores){
@@ -114,15 +111,10 @@ function revise_content(data, scores){
         let sent = detokenize(tokens.join(' '));
         if (score >= 0.15) return `<span class="sent erroneous sen-bad"> ${sent}</span>`;
         else if (score > 0.0) return `<span class="sent erroneous sen-notok"> ${sent}</span>`;
-        else return sent
+        else return sent;
     }).join(' ');
     $('#feedback-dectect').html(content).removeClass('d-none');
 }
-
-function detokenize(text) {
-    return text.replace(' ,',',').replace(' .','.').replace(' ?','?');
-}
-
 
 function revise_sentence(data, tag_token) {
     sent = data[0];
@@ -133,11 +125,11 @@ function revise_sentence(data, tag_token) {
         if (tag[i] == 'O')
             content += ' '+sent[i];
         else if(tag[i] == 'B-I')
-            content += ` <span class="${tag[i]} edit text-nowrap" id=${i} data-etype="insert"> Insert Word </span> ${sent[i]}`;
+            content += ` <span class="badge badge-warning edit text-uppercase" id=${i} data-etype="insert">Insert</span> ${sent[i]}`;
         else if (tag[i]=='B-R')
-            content += ` <span class="${tag[i]} edit text-nowrap" id=${i} data-etype="replace">${sent[i]}</span>`;
+            content += ` <span class="badge badge-success edit" id=${i} data-etype="replace">${sent[i]}</span>`;
         else if (tag[i]=='B-D')
-            content += ` <span class="${tag[i]} edit text-nowrap" id=${i} data-etype="delete">${sent[i]}</span>`;
+            content += ` <span class="badge badge-danger edit" id=${i} data-etype="delete">${sent[i]}</span>`;
     }
 
     content = detokenize(content.replace(' ,', ',').replace(' .', '.'));
@@ -145,5 +137,6 @@ function revise_sentence(data, tag_token) {
 }
 
 
-
-
+function detokenize(text) {
+    return text.replace(' ,',',').replace(' .','.').replace(' ?','?');
+}

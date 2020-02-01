@@ -1,193 +1,166 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>AES_Ting</title>
-        <link rel="stylesheet" type="text/css" href="static/css/style.css">
-        <link rel="stylesheet" type="text/css" href="static/css/linggle.css">
-        <link rel="stylesheet" type="text/css" href="static/css/core.css">
-        <link rel="stylesheet" type="text/css" href="static/css/write.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            
-
-    </head>
-    <body>
-            <!-- Just an image -->
-            <nav class="navbar navbar-expand-sm navbar-light bg-light" style="background-color: #e3f2fd;">
-                <a class="navbar-brand" href="/">LinggleWrite</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a id="btn-feature" class="hoverable nav-link" data-toggle="modal" data-target="#feature-modal">Feature & Task Help</a> 
-                        </li>
-                    </ul>   
+<head>
+    <title>AES_Ting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/linggle.css">
+    <link rel="stylesheet" type="text/css" href="static/css/core.css">
+    <link rel="stylesheet" type="text/css" href="static/css/write.css">
+</head>
+<body>
+    <!-- Just an image -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="/">LinggleWrite</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a id="btn-feature" class="hoverable nav-link" data-toggle="modal" data-target="#feature-modal">Feature & Task Help</a> 
+                </li>
+            </ul>   
+        </div>
+    </nav>
+    
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="leftDiv">
+            <div class="text-body">
+                <div>
+                    <div contenteditable="true" id="search"><span>Dear</span><span>&nbsp;Helen</span><span>&nbsp;Ryan,</span><span>&nbsp;<br>I</span><span>&nbsp;received</span><span>&nbsp;your</span><span>&nbsp;letter,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;writing</span><span>&nbsp;to</span><span>&nbsp;you</span><span>&nbsp;to</span><span>&nbsp;give</span><span>&nbsp;you</span><span>&nbsp;some</span><span>&nbsp;informations</span><span>&nbsp;about</span><span>&nbsp;me.</span><span>&nbsp;<br>I</span><span>&nbsp;would</span><span>&nbsp;like</span><span>&nbsp;to</span><span>&nbsp;travel</span><span>&nbsp;on</span><span>&nbsp;July</span><span>&nbsp;because</span><span>&nbsp;I</span><span>&nbsp;finish</span><span>&nbsp;school</span><span>&nbsp;on</span><span>&nbsp;June</span><span>&nbsp;and</span><span>&nbsp;I</span><span>&nbsp;go</span><span>&nbsp;to</span><span>&nbsp;the</span><span>&nbsp;Great</span><span>&nbsp;Britain</span><span>&nbsp;August</span><span>&nbsp;for</span><span>&nbsp;one</span><span>&nbsp;month.</span><span>&nbsp;<br>If</span><span>&nbsp;I</span><span>&nbsp;can</span><span>&nbsp;choose</span><span>&nbsp;my</span><span>&nbsp;accommodation,</span><span>&nbsp;I</span><span>&nbsp;prefer</span><span>&nbsp;staying</span><span>&nbsp;in</span><span>&nbsp;tent.</span><span>&nbsp;<br>I</span><span>&nbsp;prefer</span><span>&nbsp;to</span><span>&nbsp;this</span><span>&nbsp;accommodation</span><span>&nbsp;because</span><span>&nbsp;I</span><span>&nbsp;think</span><span>&nbsp;it's</span><span>&nbsp;easier</span><span>&nbsp;to</span><span>&nbsp;near</span><span>&nbsp;them,</span><span>&nbsp;than</span><span>&nbsp;when</span><span>&nbsp;you</span><span>&nbsp;stay</span><span>&nbsp;a</span><span>&nbsp;log</span><span>&nbsp;cabin.</span><span>&nbsp;<br>I</span><span>&nbsp;want</span><span>&nbsp;to</span><span>&nbsp;play</span><span>&nbsp;tennis</span><span>&nbsp;and</span><span>&nbsp;go</span><span>&nbsp;to</span><span>&nbsp;swimming.</span><span>&nbsp;<br>I</span><span>&nbsp;haven't</span><span>&nbsp;played</span><span>&nbsp;tennis</span><span>&nbsp;before,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;not</span><span>&nbsp;good.</span><span>&nbsp;<br>I</span><span>&nbsp;go</span><span>&nbsp;the</span><span>&nbsp;swimming</span><span>&nbsp;pool</span><span>&nbsp;two</span><span>&nbsp;time</span><span>&nbsp;a</span><span>&nbsp;week,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;good</span><span>&nbsp;this</span><span>&nbsp;sport.</span><span>&nbsp;<br>Could</span><span>&nbsp;you</span><span>&nbsp;tell</span><span>&nbsp;me</span><span>&nbsp;what</span><span>&nbsp;sort</span><span>&nbsp;of</span><span>&nbsp;clothes</span><span>&nbsp;I</span><span>&nbsp;will</span><span>&nbsp;have</span><span>&nbsp;to</span><span>&nbsp;wear</span><span>&nbsp;to</span><span>&nbsp;play</span><span>&nbsp;tennis?</span><span>&nbsp;<br>Could</span><span>&nbsp;you</span><span>&nbsp;tell</span><span>&nbsp;me</span><span>&nbsp;if</span><span>&nbsp;I</span><span>&nbsp;will</span><span>&nbsp;need</span><span>&nbsp;money</span><span>&nbsp;for</span><span>&nbsp;</span><span>&nbsp;my</span><span>&nbsp;dinners?</span><span>&nbsp;<br>Yours</span><span>&nbsp;sincerely,</span><span>&nbsp;<br>Eric</span><span>&nbsp;Durand</span><span>&nbsp;</span></div>
                 </div>
-            </nav>
-        
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <div class="leftDiv">
-                <div class="texth4"><h4>Input Essay</h4></div>
-                <div class="text-body">
-                    <div >
-			    
-			<div contenteditable="true" id="search"><span>Dear</span><span>&nbsp;Helen</span><span>&nbsp;Ryan,</span><span>&nbsp;<br>I</span><span>&nbsp;received</span><span>&nbsp;your</span><span>&nbsp;letter,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;writing</span><span>&nbsp;to</span><span>&nbsp;you</span><span>&nbsp;to</span><span>&nbsp;give</span><span>&nbsp;you</span><span>&nbsp;some</span><span>&nbsp;informations</span><span>&nbsp;about</span><span>&nbsp;me.</span><span>&nbsp;<br>I</span><span>&nbsp;would</span><span>&nbsp;like</span><span>&nbsp;to</span><span>&nbsp;travel</span><span>&nbsp;on</span><span>&nbsp;July</span><span>&nbsp;because</span><span>&nbsp;I</span><span>&nbsp;finish</span><span>&nbsp;school</span><span>&nbsp;on</span><span>&nbsp;June</span><span>&nbsp;and</span><span>&nbsp;I</span><span>&nbsp;go</span><span>&nbsp;to</span><span>&nbsp;the</span><span>&nbsp;Great</span><span>&nbsp;Britain</span><span>&nbsp;August</span><span>&nbsp;for</span><span>&nbsp;one</span><span>&nbsp;month.</span><span>&nbsp;<br>If</span><span>&nbsp;I</span><span>&nbsp;can</span><span>&nbsp;choose</span><span>&nbsp;my</span><span>&nbsp;accommodation,</span><span>&nbsp;I</span><span>&nbsp;prefer</span><span>&nbsp;staying</span><span>&nbsp;in</span><span>&nbsp;tent.</span><span>&nbsp;<br>I</span><span>&nbsp;prefer</span><span>&nbsp;to</span><span>&nbsp;this</span><span>&nbsp;accommodation</span><span>&nbsp;because</span><span>&nbsp;I</span><span>&nbsp;think</span><span>&nbsp;it's</span><span>&nbsp;easier</span><span>&nbsp;to</span><span>&nbsp;near</span><span>&nbsp;them,</span><span>&nbsp;than</span><span>&nbsp;when</span><span>&nbsp;you</span><span>&nbsp;stay</span><span>&nbsp;a</span><span>&nbsp;log</span><span>&nbsp;cabin.</span><span>&nbsp;<br>I</span><span>&nbsp;want</span><span>&nbsp;to</span><span>&nbsp;play</span><span>&nbsp;tennis</span><span>&nbsp;and</span><span>&nbsp;go</span><span>&nbsp;to</span><span>&nbsp;swimming.</span><span>&nbsp;<br>I</span><span>&nbsp;haven't</span><span>&nbsp;played</span><span>&nbsp;tennis</span><span>&nbsp;before,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;not</span><span>&nbsp;good.</span><span>&nbsp;<br>I</span><span>&nbsp;go</span><span>&nbsp;the</span><span>&nbsp;swimming</span><span>&nbsp;pool</span><span>&nbsp;two</span><span>&nbsp;time</span><span>&nbsp;a</span><span>&nbsp;week,</span><span>&nbsp;so</span><span>&nbsp;I</span><span>&nbsp;am</span><span>&nbsp;good</span><span>&nbsp;this</span><span>&nbsp;sport.</span><span>&nbsp;<br>Could</span><span>&nbsp;you</span><span>&nbsp;tell</span><span>&nbsp;me</span><span>&nbsp;what</span><span>&nbsp;sort</span><span>&nbsp;of</span><span>&nbsp;clothes</span><span>&nbsp;I</span><span>&nbsp;will</span><span>&nbsp;have</span><span>&nbsp;to</span><span>&nbsp;wear</span><span>&nbsp;to</span><span>&nbsp;play</span><span>&nbsp;tennis?</span><span>&nbsp;<br>Could</span><span>&nbsp;you</span><span>&nbsp;tell</span><span>&nbsp;me</span><span>&nbsp;if</span><span>&nbsp;I</span><span>&nbsp;will</span><span>&nbsp;need</span><span>&nbsp;money</span><span>&nbsp;for</span><span>&nbsp;</span><span>&nbsp;my</span><span>&nbsp;dinners?</span><span>&nbsp;<br>Yours</span><span>&nbsp;sincerely,</span><span>&nbsp;<br>Eric</span><span>&nbsp;Durand</span><span>&nbsp;</span></div>
-                        
-                              
-                        </div>
-
-                            <div class="alert alert-primary" role="alert" id="inalert">
-                                    <a href="#" class="alert-link" id="word_count">0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Function AES will carry out.)
+                <div class="alert alert-primary" role="alert" id="inalert">
+                        <a href="#" class="alert-link" id="word_count">0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Function AES will carry out.)
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0 text-center">Sentence-level feedback</h5>
                             </div>
-                    <div class="row">
-                        <div class="col-sen-toop">
-                            <div class="card">
-                            <div class="card-body-sen">
-                                <h5 class="card-title-sen p-sen text-center">Sentence-level feedback</h5>
-                                <div class="p-sens">
-                                <p class="p-sen sen-good">This seems to be a good sentence.</p>
-                                <p class="p-sen sen-notok">This sentence could maybe be improved.</p>
-                                <p class="p-sen sen-bad">There are some problems in this sentence.</p>
-                                </div>
+                            <div class="card-body p-1">
+                                <div class="sen-good">This seems to be a good sentence.</div>
+                                <div class="sen-notok">This sentence could maybe be improved.</div>
+                                <div class="sen-bad">There are some problems in this sentence.</div>
                             </div>
-                            </div>
-                        </div>
-                        <div class="col-button">
-                            <button type="button" class="btn btn-outline-primary btn-lg float-right" id="send-aes" disabled>Check</button>
-                            <button type="button" class="btn btn-outline-primary btn-lg float-right d-none" id="keep-writing">Keep writing</button>
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="d-flex flex-column">
+                            <div class="py-1">
+                                <button type="button" class="btn btn-outline-primary btn-lg float-right" id="send-aes" disabled>Check</button>
+                            </div>
+                            <div class="py-1">
+                                <button type="button" class="btn btn-outline-primary float-right d-none" id="keep-writing">Keep writing</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="rightDiv">
-            <div class="writeAhead">
-                <div class="card" id="card1">
-                    <div class="card1-title text-center">
-                        <h5 class="col-12" id="first-word">Interactive Writing Environment</h5>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-subtitle mb-2 text-uppercase text-muted text-center pattern-headword"></h5>
-                        <div class="pattern-area"></div>
-                    </div>
-                </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="rightDiv">
+        <div class="writeAhead card border-light mb-0">
+            <div class="card-header text-center">
+                <h5 class="mb-0">Interactive Writing Suggestion</h5>
             </div>
-       
-            <div class="functionall d-none">
-                <div class="card" id="card1">
-                    <div class="card1-title">
-                        <h5 class="col-12" id="first-word">
-                            Task Help
-                            <button id="help" type="button" class="btn text-center button4" data-toggle="modal" data-target="#exampleModalLong">
-                                Help
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="score-feeback" class="card-body d-none">
-                        <div class="row">
-                            <div class="col-specail">
-                                <div class="list-group">
+            <div class="card-body">
+                <h5 class="card-subtitle mb-2 text-uppercase text-muted text-center pattern-headword"></h5>
+                <div class="pattern-area"></div>
+            </div>
+        </div>
+    
+        <div class="functionall d-none">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        Writing Assessment
+                        <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#feature-modal">
+                            Help
+                        </button>
+                    </h5>
+                </div>
+                <div id="score-feeback" class="card-body d-none">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                                <div class="list-group list-group-horizontal">
                                     <a class="list-group-item text-center">CEFR Level</a>
-                                    <!--
-                                    <a class="list-group-item text-center">CEFR Score</a>    
-                                    -->
-                                </div>
-                            </div>
-                            <div class="col-score">
-                                <div class="list-group"id="score-border">
                                     <a class="list-group-item text-center"><div id="cerf-leve"></div></a>
-                                    <!--
-                                    <a class="list-group-item text-center"><div id="cerf-score"></div></a>
-                                    -->
                                 </div>
-                            </div>
-                            <div class="col-prgress">
-                                <div class="progress" style="height: 25px;">
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="a1">A1</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="a2">A2</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="b1">B1</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="b2">B2</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center score-border-1" role="progressbar" style="width: 16.6%" id="c1">C1</div>
-                                    <div  class="progress-bar progress-bar-striped  text-center " role="progressbar" style="width: 16.6%" id="c2">C2</div>
-                                </div>
-                                <!--
-                                <div class="progress" style="height: 25px;" id="score_1">
-                                    <div id="score-bar" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%">70%</div>
-                                </div>
-                                -->
-                            </div>   
                         </div>
-                    </div>       
-                </div>
-                    
-                <div class="card" id="card2">
-                    <div class="card1-title ">
-                        <h5 class="col-12" id="first-word">Detection</h5>
-                    </div>
-                    <div class="card-body" id="feedback-dectect">
-                        
-                    </div>
-                </div>
-                <div class="card" id="card3">
-                    <div class="card-header">
-                        <h5>Suggestion
-                            <span class="badge badge-warning">Insert</span>
-                            <span class="badge badge-danger">Delete</span>
-                            <span class="badge badge-success">Replace</span>
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <div id="suggest-info"></div>
-                        <form class="navbar-form navbar-left">
-                                <div class="form-group">
-                                <!-- search -->
-                                <div class="input-group">
-                                    <input id="search-bar" type="text" class="form-control" placeholder="Search...">
-                                    <span class="input-group-btn">
-                                    <button id="search-bar-btn" class="linggle btn btn-main" type="button">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                    </button>
-                                    </span>
-                                </div>
-                                </div>
-                        </form>
-                        <div>
-                            <div class="linggle search-result" style="display: block;">
-                                    <!-- search result listitems -->
-                                    <table class="table">
-                                        <colgroup><col id="ngram">
-                                        <col id="percent">
-                                        <col id="count">
-                                        <col id="example">
-                                        </colgroup><thead>
-                                        <tr>
-                                            <th class="col-xs-9">N-gram</th>
-                                            <th class="col-xs-1 text-right">Percent</th>
-                                            <th class="col-xs-1 text-right">Count</th>
-                                            <th class="col-xs-1">Example</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody><tr><td colspan="4">No result</td></tr></tbody>
-                                    </table>
-                                    <div class="linggle spinner" style="display: none;"></div>
+                        <div class="col">
+                            <div class="score progress" style="min-height: 25px;">
+                                <div class="progress-bar progress-bar-striped text-center score-border-1" role="progressbar" style="width: 16.6%" id="a1">A1</div>
+                                <div class="progress-bar progress-bar-striped text-center score-border-1" role="progressbar" style="width: 16.6%" id="a2">A2</div>
+                                <div class="progress-bar progress-bar-striped text-center score-border-1" role="progressbar" style="width: 16.6%" id="b1">B1</div>
+                                <div class="progress-bar progress-bar-striped text-center score-border-1" role="progressbar" style="width: 16.6%" id="b2">B2</div>
+                                <div class="progress-bar progress-bar-striped text-center score-border-1" role="progressbar" style="width: 16.6%" id="c1">C1</div>
+                                <div class="progress-bar progress-bar-striped text-center" role="progressbar" style="width: 16.6%" id="c2">C2</div>
                             </div>
+                        </div>   
+                    </div>
+                </div>       
+            </div>
+                
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="mb-0">Detection</h5>
+                </div>
+                <div class="card-body" id="feedback-dectect"></div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="mb-0">Suggestion
+                        <span class="badge badge-warning font-weight-light">Insert</span>
+                        <span class="badge badge-danger font-weight-light">Delete</span>
+                        <span class="badge badge-success font-weight-light">Replace</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="suggest-info"></div>
+                    <form class="navbar-form navbar-left">
+                            <div class="form-group">
+                            <!-- search -->
+                            <div class="input-group">
+                                <input id="search-bar" type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button id="search-bar-btn" class="linggle btn btn-main" type="button">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                                </span>
+                            </div>
+                            </div>
+                    </form>
+                    <div>
+                        <div class="linggle search-result" style="display: block;">
+                            <!-- search result listitems -->
+                            <table class="table">
+                                <colgroup><col id="ngram">
+                                <col id="percent">
+                                <col id="count">
+                                <col id="example">
+                                </colgroup><thead>
+                                <tr>
+                                    <th class="col-xs-9">N-gram</th>
+                                    <th class="col-xs-1 text-right">Percent</th>
+                                    <th class="col-xs-1 text-right">Count</th>
+                                    <th class="col-xs-1">Example</th>
+                                </tr>
+                                </thead>
+                                <tbody><tr><td colspan="4">No result</td></tr></tbody>
+                            </table>
+                            <div class="linggle spinner" style="display: none;"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     <!-- Feature Modal -->
     <div class="modal fade" id="feature-modal" tabindex="-1" role="dialog" aria-labelledby="feature-modal" aria-hidden="true">
@@ -256,14 +229,14 @@
             </div>
         </div>
     </div>
-            
-        <script src="static/js/main.js"></script>
-        <script src="static/js/linggle.js"></script>
-        <script src="static/js/example.js"></script>
-        <script src="static/js/search-bar.js"></script>
-        <script src="static/js/write.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 
-
-    </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="static/js/main.js"></script>
+    <script src="static/js/linggle.js"></script>
+    <script src="static/js/example.js"></script>
+    <script src="static/js/search-bar.js"></script>
+    <script src="static/js/write.js"></script>
+</body>
 </html>

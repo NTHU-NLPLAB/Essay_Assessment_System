@@ -1,14 +1,14 @@
 $(document).ready(function() {
-  onTextAreaInput();
+    onTextAreaInput();
 
-  $("#search").on('mousemove', spanText)
-    .on('mouseenter', 'span', onHover)
-    .on("keyup", onTextAreaInput);
+    $("#search").on('mousemove', spanText)
+        .on('mouseenter', 'span', onHover)
+        .on("keyup", onTextAreaInput);
 
-  $("#keep-writing").click(function() {
-    $(".functionall").addClass('d-none');
-    $(".writeAhead").removeClass('d-none');
-  });
+    $("#keep-writing").click(function() {
+        $(".functionall").addClass('d-none');
+        $(".writeAhead").removeClass('d-none');
+    });
 });
 
 API_URL = "/api/write_call"
@@ -86,30 +86,30 @@ function setCaretLast() {
 }
 
 function spanText() {
-  if (!spanned && $("#search").text().length > 0) {
-    let str = searchText().trimEnd();
-    $("#search")[0].innerHTML = "<span>" + str.replace(/[\xa0 ]*\n/g," <br>").split(/[\xa0\ ]/g).join("</span><span>&nbsp;") + "</span>";
-    setCaretLast();
-    spanned = true;
-  }
+    if (!spanned && $("#search").text().length > 0) {
+        let str = searchText().trimEnd();
+        $("#search")[0].innerHTML = "<span>" + str.replace(/[\xa0 ]*\n/g," <br>").split(/[\xa0\ ]/g).join("</span><span>&nbsp;") + "</span>";
+        setCaretLast();
+        spanned = true;
+    }
 }
 
 function onHover(e) {
-  node = e.currentTarget;
-  showHint(getIndex(node));
+    node = e.currentTarget;
+    showHint(getIndex(node));
 }
 
 function getIndex(node) {
-  let i = 0;
-  while( (node = node.previousSibling) != null ) i++;
-  return i
+    let i = 0;
+    while( (node = node.previousSibling) != null ) i++;
+    return i
 }
 
 function searchText() {
-  if ($("#search")[0].innerText == undefined)
-    return $("#search")[0].innerHTML.replace(/<br>/gi,"\n").replace(/(<([^>]+)>)/g, "");
-  else
-    return $("#search")[0].innerText;
+    if ($("#search")[0].innerText == undefined)
+        return $("#search")[0].innerHTML.replace(/<br>/gi,"\n").replace(/(<([^>]+)>)/g, "");
+    else
+        return $("#search")[0].innerText;
 }
 
 function renderPatternResult(data) {
