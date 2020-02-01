@@ -19,7 +19,7 @@ def gen_replace_query(word):
         return '/'.join(spell.suggest(word)).replace(' ', '_')
 
 
-@app.get("/{ngramstr}", response_class=UJSONResponse)
+@app.get("/suggest/{ngramstr}", response_class=UJSONResponse)
 def check_ngram(ngramstr: str, err_type: str = None):
     ngram = ngramstr.split()
     if err_type == 'replace':
