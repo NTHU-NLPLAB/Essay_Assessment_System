@@ -48,6 +48,10 @@ textarea:focus, textarea.form-control:focus, button.btn:focus, input:focus, inpu
     overflow: auto;
 }
 
+.edit.badge {
+    cursor: pointer;
+}
+
 :root {
     --a1-color: #ff8000;
     --a2-color: #00a0a0;
