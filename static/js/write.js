@@ -16,6 +16,8 @@ API_URL = "/api/write_call"
 last = "";
 spanned = false;
 
+const COLL_ELEMENTS = ['v', 'n', 'adj', 'adv', 'inf', '-ing', 'wh', '(v)'];
+
 function get_pattern_post(query) {
     $.ajax({
         type: "POST",
@@ -31,43 +33,43 @@ function get_pattern_post(query) {
 }
 
 function showHint(hover) {
-  let str = searchText();
-  if (str.length == 0)
-    str = last;
-  else
-    last = str = str.replace(/(\s+)|(&nbsp;)/g," ");
+    let str = searchText();
+    if (str.length == 0)
+        str = last;
+    else
+        last = str = str.replace(/(\s+)|(&nbsp;)/g, " ");
 
-  if (hover != undefined) {
-    let res = str.split(' ');
-    let q = res.slice(0, res.length-(res.length-hover)+1).join(' ');
-    get_pattern_post(q);
-  } else
-    get_pattern_post(str);
+    if (hover != undefined) {
+        let res = str.split(' ');
+        let q = res.slice(0, res.length-(res.length-hover)+1).join(' ');
+        get_pattern_post(q);
+    } else
+        get_pattern_post(str);
 }
 
 function onTextAreaInput() { 
-  if($("#search")[0].innerText == "\n")
-    $("#search")[0].innerHTML = "";
+    if($("#search")[0].innerText == "\n")
+        $("#search")[0].innerHTML = "";
 
-  let str = searchText();
-  if (!(str.length == 0 || str == last)) {
-    spanned = false;
-    showHint();
-  }
-  updateTextArea();
+    let str = searchText();
+    if (!(str.length == 0 || str == last)) {
+        spanned = false;
+        showHint();
+    }
+    updateTextArea();
 }
 
 function updateTextArea() {
-  let sentence = $('#search').html().replace(/<div>/gi,' ').replace(/<\/div>/gi,'').replace(/<span>/gi,' ').replace(/<\/span>/gi,'');
-  let length = countWords(sentence);
-  $('#word_count').text(length);
-  $('#send-aes').prop('disabled', !(length>=5));
+    let sentence = $('#search').html().replace(/<div>/gi,' ').replace(/<\/div>/gi,'').replace(/<span>/gi,' ').replace(/<\/span>/gi,'');
+    let length = countWords(sentence);
+    $('#word_count').text(length);
+    $('#send-aes').prop('disabled', !(length>=5));
 }
 
 function countWords(s){ 
-    s = s.replace(/(^\s*)|(\s*$)/gi,"");
-    s = s.replace(/[ ]{2,}/gi," ");
-    s = s.replace(/\n /,"\n");
+    s = s.replace(/(^\s*)|(\s*$)/gi, "");
+    s = s.replace(/[ ]{2,}/gi, " ");
+    s = s.replace(/\n /, "\n");
 
     let tokens = s.split(/\s+/);
     return tokens.length;
@@ -75,14 +77,14 @@ function countWords(s){
 
 
 function setCaretLast() {
-  let el = $("#search")[0];
-  let range = document.createRange();
-  let sel = window.getSelection();
-  range.setStartAfter(el.childNodes[el.childNodes.length-1]);
-  range.collapse(true);
-  sel.removeAllRanges();
-  sel.addRange(range);
-  el.focus();
+    let el = $("#search")[0];
+    let range = document.createRange();
+    let sel = window.getSelection();
+    range.setStartAfter(el.childNodes[el.childNodes.length-1]);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+    el.focus();
 }
 
 function spanText() {
@@ -116,15 +118,25 @@ function renderPatternResult(data) {
     let htmlFrag = '';
     //console.log(data)
     data.patterns.forEach(function(pattern) {
-        res = pattern.text.split(' ')
+        let pattern_items = pattern.text.split(' ')
+        let colls_indice = [];
+        pattern_items.forEach((item, index) => {
+            if (COLL_ELEMENTS.indexOf(item) > 0)
+            colls_indice.push(index);
+        });
 
-        let coll = res.join(' ');
-        let col = pattern.colls.map((c) => `${coll}${c}`).join(', ');
+        let colls = pattern.colls.map((coll_items) => {
+            let items = pattern_items.slice();
+            coll_items.split('_').forEach((coll, index) => {
+                items[colls_indice[index]] = coll;
+            });
+            return items.join(' ');
+        }).join(', ');
 
         htmlFrag += `<p class="pattern">
                         <span class="patt">[${pattern.text}]</span>
                         <font size="3" color="green">${pattern.percent}</font>
-                        <span class ="col">${col}</span>
+                        <span class ="col">${colls}</span>
                     </p>
                     <p class="example">${pattern.examples[0]}</p>
                     <p class="example">${pattern.examples[1]}</p>
