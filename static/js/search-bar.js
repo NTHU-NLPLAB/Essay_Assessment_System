@@ -1,10 +1,9 @@
-var SearchBar = {
+const SearchBar = {
 
     init: function() {
-      var brandIcon = $('.linggle.navbar .navbar-brand');
-      var searchBar = $('.linggle #search-bar');
-      var searchResultPage = $('.linggle.search-result');
-      var searchBarBtn = $('#search-bar-btn');
+      let brandIcon = $('.linggle.navbar .navbar-brand');
+      let searchBar = $('.linggle #search-bar');
+      let searchBarBtn = $('#search-bar-btn');
   
       // Register events
       brandIcon.click(this.handleOnClickBrandIcon);
@@ -21,8 +20,8 @@ var SearchBar = {
     },
   
     handleOnFocus: function(e) {
-      var landingPage = $('.linggle.landing');
-      var searchResultPage = $('.linggle.search-result');
+      let landingPage = $('.linggle.landing');
+      let searchResultPage = $('.linggle.search-result');
   
       // toggle visibility
       landingPage.hide();
@@ -30,9 +29,9 @@ var SearchBar = {
     },
   
     handleOnBlur: function(e) {
-      var landingPage = $('.linggle.landing');
-      var searchResultPage = $('.linggle.search-result');
-      var searchBar = $('.linggle #search-bar');
+      let landingPage = $('.linggle.landing');
+      let searchResultPage = $('.linggle.search-result');
+      let searchBar = $('.linggle #search-bar');
   
       // no input text
       if(!searchBar.val().trim()) {
@@ -43,9 +42,9 @@ var SearchBar = {
     },
   
     handleOnClickBrandIcon: function(e) {
-      var searchBar = $('.linggle #search-bar');
-      var landingPage = $('.linggle.landing');
-      var searchResultPage = $('.linggle.search-result');
+      let searchBar = $('.linggle #search-bar');
+      let landingPage = $('.linggle.landing');
+      let searchResultPage = $('.linggle.search-result');
   
       // clear input text
       searchBar.val('');
@@ -61,8 +60,8 @@ var SearchBar = {
     },
   
     query: function() {
-      var searchBar = $('#search-bar');
-      var query = searchBar.val();
+      let searchBar = $('#search-bar');
+      let query = searchBar.val();
       //console.log(query)
   
       if (query) {
