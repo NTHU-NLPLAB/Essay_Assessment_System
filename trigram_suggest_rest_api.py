@@ -20,7 +20,7 @@ def gen_replace_query(word):
 
 
 @app.get("/suggest/{ngramstr}", response_class=UJSONResponse)
-def check_ngram(ngramstr: str, err_type: str = None):
+async def check_ngram(ngramstr: str, err_type: str = None):
     ngram = ngramstr.split()
     if err_type == 'replace':
         ngram[1] = gen_replace_query(ngram[1])
