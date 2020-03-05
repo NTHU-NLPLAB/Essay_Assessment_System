@@ -24,15 +24,11 @@ async def check_ngram(ngramstr: str, err_type: str = None):
     ngram = ngramstr.split()
     if err_type == 'replace':
         ngram[1] = gen_replace_query(ngram[1])
-        res = linggle.query(' '.join(ngram))._asdict()
     elif err_type == 'delete':
         ngram[1] = '?' + ngram[1]
-        res = linggle.query(' '.join(ngram))._asdict()
     elif err_type == 'insert':
-        cmd = ' '.join((ngram[0], '?_', ngram[1]))
-        res = linggle.query(cmd)._asdict()
+        ngram.insert(1, '?_')
     else:
-        res = linggle.query(ngramstr)._asdict()
-    # TODO: this is just a temporary workaround
-    res['query'] = res['query'].replace('@', '/')
-    return res
+        pass
+    query = ' '.join(ngram)
+    return {'query': query, 'ngrams': linggle.query(query)}
