@@ -3,7 +3,7 @@
 import requests
 import urllib
 
-NGRAM_API_URI = "https://{0}.linggle.com/query/"
+NGRAM_API_URI = "https://{0}.linggle.com/ngram/"
 EXP_API_URI = "https://{0}.linggle.com/example/"
 
 
