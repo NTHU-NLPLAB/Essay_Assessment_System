@@ -19,12 +19,10 @@ let SearchResult = {
         //console.log(data)
         $('#search-bar').val(data.query);
         if (data.ngrams.length > 0) {
-            $('.linggle.search-result tbody').html(data.ngrams.map(function(ngramData) {
-                let ngram = ngramData[0];
-                let count = ngramData[1];
-                let percent = Math.round(count/data.total * 1000) / 10;
-                return SearchResult.renderNgramRowHtml(ngram, count, percent);
-            }).join(''));
+            let total = data.ngrams.reduce((a, b) => a + b[1], 0);
+            data.ngrams.forEach(ngram => { ngram[2] = Math.round(ngram[1] / total * 1000) / 10; });
+            let htmlFrag = data.ngrams.map(SearchResult.renderNgramRowHtml).join('');
+            $('.linggle.search-result tbody').html(htmlFrag);
             Example.initExampleBtns();
         } else {
             $('.linggle.search-result tbody').html('<tr><td colspan=4>No result</td></tr>');
@@ -33,8 +31,10 @@ let SearchResult = {
         $('.linggle.search-result').removeClass('d-none');
     },
   
-    renderNgramRowHtml: function(ngram, count, percent) {
-        //console.log(ngram, count, percent);
+    renderNgramRowHtml: function(ngramData) {
+        let ngram = ngramData[0];
+        let count = ngramData[1];
+        let percent = ngramData[2];
         let countStr = numberWithCommas(count)
         var ngramIdstr = ngram.replace(/\ /g , '_');
         return `<tr>
