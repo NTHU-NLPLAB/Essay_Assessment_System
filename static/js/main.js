@@ -2,7 +2,7 @@ $(document).ready(function() {
     SearchBar.init();
 
     let params = (new URL(document.location)).searchParams;
-    if (params.has("query")) $('#search').text(params.get("query"));
+    if (params.has("q")) $('#search').text(params.get("q"));
 
     $("#send-aes").click(function() {
         $(this).removeClass('btn-lg').text('Check again').prop('disabled', true);
