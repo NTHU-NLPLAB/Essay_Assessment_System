@@ -3,7 +3,7 @@ API_URL_suggest = '/suggest/'
 let SearchResult = {
     currentResultTime: Date.now(),
     query: function(query, err_type) {
-        console.log(query)
+        console.log(query);
         // TODO: add loading
         // $('.linggle.search-result').addClass('d-none');
         $.ajax({
@@ -13,8 +13,7 @@ let SearchResult = {
         .done(this.renderSearchResult)
         .fail(this.renderSearchFail);
     },
-  
-  
+
     renderSearchResult: function(data) {
         //console.log(data)
         $('#search-bar').val(data.query);
@@ -35,7 +34,7 @@ let SearchResult = {
         let ngram = ngramData[0];
         let count = ngramData[1];
         let percent = ngramData[2];
-        let countStr = numberWithCommas(count)
+        let countStr = numberWithCommas(count);
         var ngramIdstr = ngram.replace(/\ /g , '_');
         return `<tr>
             <td class="ngram">${ngram}
