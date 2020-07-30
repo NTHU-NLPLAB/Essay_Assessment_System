@@ -19,9 +19,9 @@ def gen_replace_query(word):
         return '/'.join(spell.suggest(word)).replace(' ', '_')
 
 
-@app.get("/suggest/{ngramstr}", response_class=UJSONResponse)
-async def check_ngram(ngramstr: str, err_type: str = None):
-    ngram = ngramstr.split()
+@app.get("/suggest/{query:path}", response_class=UJSONResponse)
+async def check_ngram(query: str, err_type: str = None):
+    ngram = query.split()
     if err_type == 'replace':
         ngram[1] = gen_replace_query(ngram[1])
     elif err_type == 'delete':
