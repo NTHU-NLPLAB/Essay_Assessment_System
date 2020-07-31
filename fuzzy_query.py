@@ -10,7 +10,7 @@ def to_ngrams(tokens, n):
 def gen_fuzzy_queries(query, index=None):
     tokens = query.split()
     if index:
-        candidates = (tokens[i:j] for i in range(index) for j in range(index+1, len(query)+1))
+        candidates = (tokens[i:j] for i in range(index) for j in range(index+1, len(tokens)+1))
         candidates = sorted(candidates, key=len, reverse=True)
     else:
         length = min(len(tokens), 5)
