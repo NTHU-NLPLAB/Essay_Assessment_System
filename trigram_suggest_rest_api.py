@@ -1,11 +1,12 @@
 from starlette.responses import UJSONResponse
 from fastapi import FastAPI
-
-from linggle_api import LinggleAPI
 import enchant
 
+from linggle_api import linggle
+from fuzzy_query import fuzzy_query
+
+
 app = FastAPI()
-linggle = LinggleAPI()
 spell = enchant.Dict('en')
 
 
@@ -15,20 +16,29 @@ def gen_replace_query(word):
         return '_'
     else:
         # TODO: this is a temporary workaround
-        # shoud search for multi-word as well
         return '/'.join(spell.suggest(word)).replace(' ', '_')
 
 
-@app.get("/suggest/{query:path}", response_class=UJSONResponse)
-async def check_ngram(query: str, err_type: str = None):
+def gen_check_query(query: str, err_type: str, index: int):
     ngram = query.split()
     if err_type == 'replace':
-        ngram[1] = gen_replace_query(ngram[1])
+        ngram[index] = gen_replace_query(ngram[index])
     elif err_type == 'delete':
-        ngram[1] = '?' + ngram[1]
+        ngram[index] = '?' + ngram[index]
     elif err_type == 'insert':
-        ngram.insert(1, '?_')
+        ngram.insert(index, '?_')
     else:
         pass
-    query = ' '.join(ngram)
-    return {'query': query, 'ngrams': linggle.query(query)}
+    return ' '.join(ngram)
+
+
+
+@app.get("/suggest/{query:path}", response_class=UJSONResponse)
+async def check_ngram(query: str, err_type: str = None, index: int = -1):
+    if err_type and index >= 0:
+        query = gen_check_query(query, err_type, index)
+    ngrams = linggle(query)
+    # if no result, change query to get partial result
+    if not ngrams:
+        query, ngrams = fuzzy_query(query, index)
+    return {'query': query, 'ngrams': ngrams}
