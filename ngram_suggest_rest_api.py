@@ -34,7 +34,6 @@ def gen_check_query(query: str, err_type: str, index: int):
     return ' '.join(tokens)
 
 
-
 @app.get("/suggest/{query:path}", response_class=UJSONResponse)
 async def check_ngram(query: str, err_type: str = None, index: int = -1):
     if err_type and index >= 0:
