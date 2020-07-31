@@ -22,16 +22,16 @@ def gen_replace_query(word):
 
 
 def gen_check_query(query: str, err_type: str, index: int):
-    ngram = query.split()
+    tokens = query.split()
     if err_type == 'replace':
-        ngram[index] = gen_replace_query(ngram[index])
+        tokens[index] = gen_replace_query(tokens[index])
     elif err_type == 'delete':
-        ngram[index] = '?' + ngram[index]
+        tokens[index] = '?' + tokens[index]
     elif err_type == 'insert':
-        ngram.insert(index, '?_')
+        tokens.insert(index, '?_')
     else:
         pass
-    return ' '.join(ngram)
+    return ' '.join(tokens)
 
 
 
