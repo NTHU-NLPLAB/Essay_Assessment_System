@@ -16,7 +16,9 @@ def gen_replace_query(word):
         return '_'
     else:
         # TODO: this is a temporary workaround
-        return '/'.join(spell.suggest(word)).replace(' ', '_')
+        candidates = spell.suggest(word)
+        candidates.append(word)
+        return '/'.join(candidates).replace(' ', '_')
 
 
 def gen_check_query(query: str, err_type: str, index: int):
