@@ -2,13 +2,13 @@ API_URL_suggest = '/suggest/'
 
 let SearchResult = {
     currentResultTime: Date.now(),
-    query: function(query, err_type) {
+    query: function(query, err_type, index) {
         console.log(query);
         // TODO: add loading
         // $('.linggle.search-result').addClass('d-none');
         $.ajax({
             url: API_URL_suggest+encodeURIComponent(query),
-            data: {err_type: err_type},
+            data: {err_type: err_type, index: index},
         })
         .done(this.renderSearchResult)
         .fail(this.renderSearchFail);

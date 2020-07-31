@@ -33,11 +33,12 @@ $(document).ready(function() {
         let ele = $(this);
         let index = parseInt(ele.attr('id'));
         let err_type = ele.data('etype');
-        let start = (index > 0) ? index-1:index;
-        let end = (err_type != 'insert' && index < sent.length-1) ? index+2:index+1;
+        let start = (index > 1) ? index-2:0;
+        let end_offset = (err_type != 'insert') ? 2:1;
+        let end = (index + end_offset < sent.length) ? index+end_offset+1:sent.length;
 
         let query = sent.slice(start, end).join(' ');
-        SearchResult.query(query, err_type);
+        SearchResult.query(query, err_type, index-start);
     });
 
 });
