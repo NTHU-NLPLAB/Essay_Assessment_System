@@ -135,8 +135,8 @@ function renderPatternResult(data) {
 
         htmlFrag += `<p class="pattern">
                         <span class="patt">[${pattern.text}]</span>
-                        <font size="3" color="green">${pattern.percent}</font>
-                        <span class ="col">${colls}</span>
+                        <span class="text-success">${pattern.percent}%</span>
+                        <span class="col">${colls}</span>
                     </p>
                     <p class="example">${pattern.examples[0]}</p>
                     <p class="example">${pattern.examples[1]}</p>
