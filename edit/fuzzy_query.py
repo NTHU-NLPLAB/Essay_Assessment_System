@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from itertools import groupby
-from linggle_api import linggle
+from .linggle_api import linggle
 
 
 def to_ngrams(tokens, n):

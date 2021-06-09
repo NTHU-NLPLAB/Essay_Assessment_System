@@ -2,8 +2,8 @@ from starlette.responses import UJSONResponse
 from fastapi import FastAPI
 import enchant
 
-from linggle_api import linggle
-from fuzzy_query import fuzzy_query
+from .linggle_api import linggle
+from .fuzzy_query import fuzzy_query
 
 
 app = FastAPI()
