@@ -1,6 +1,5 @@
 import os
 
-from spacy.parts_of_speech import NOUN, VERB, ADJ
 from starlette.responses import UJSONResponse
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -33,27 +32,11 @@ def suggest_gp(res: WriteQuery):
 
 @app.post("/suggest_move/", response_class=UJSONResponse)
 def suggest_move(res: WriteQuery):
-    if res.text in MOVE_PATTERNS:
-        return MOVE_PATTERNS[res.text]
-    else:
-        return tuple(MOVE_PATTERNS.keys())
+    return MOVE_PATTERNS.get(res.text) or tuple(MOVE_PATTERNS.keys())
 
 
 def get_head(text):
     for token in reversed(nlp(text)):
-        if token.pos == NOUN:
-            if token.lemma_.startswith('-'):
-                return token.text, 'N'
-            else:
-                return token.lemma_, 'N'
-        elif token.pos == VERB:
-            if token.lemma_.startswith('-'):
-                return token.text, 'V'
-            else:
-                return token.lemma_, 'V'
-        elif token.pos == ADJ:
-            if token.lemma_.startswith('-'):
-                return token.text, 'ADJ'
-            else:
-                return token.lemma_, 'ADJ'
-    return '', 'N'
+        if token.pos_ in ('VERB', 'NOUN', 'ADJ'):
+            return (token.text if token.lemma_.startswith('-') else token.lemma_, token.pos_)
+    return '', 'NOUN'
