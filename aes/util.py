@@ -1,14 +1,21 @@
 import pickle as pk
+import os
 
 from keras.preprocessing import sequence
 from keras.models import load_model
 import numpy as np
 
-model = load_model('aes_score/model/best_model.h5')
-model.predict(np.zeros((1, 350)))
+
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+AES_MODEL_PATH = os.getenv('AES_MODEL_PATH') or os.path.join(APP_DIR, 'model/best_model.h5')
+VOCAB_FILE_PATH = os.getenv('VOCAB_FILE_PATH') or os.path.join(APP_DIR, 'model/efvocab.pkl')
+
+aes_model = load_model(AES_MODEL_PATH)
+# test
+aes_model.predict(np.zeros((1, 350)))
 
 
-with open('aes_score/model/efvocab.pkl', 'rb') as vocab_file:
+with open(VOCAB_FILE_PATH, 'rb') as vocab_file:
     vocab = pk.load(vocab_file)
 
 
