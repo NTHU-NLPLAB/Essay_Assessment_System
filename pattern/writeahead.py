@@ -2,6 +2,7 @@ import os
 
 from starlette.responses import UJSONResponse
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import ujson as json
 import spacy
@@ -14,6 +15,18 @@ MOVE_PATTERNS = json.load(open(os.path.join(APP_DIR, 'move_patterns.json')))
 
 app = FastAPI()
 nlp = spacy.load(os.environ.get('SPACY_MODEL', 'en_core_web_sm'), disable=['parser', 'ner'])
+
+
+# Define CORS whitelist
+CORS_ALLOW_ORIGINS = os.getenv('CORS_ALLOW_ORIGINS').split(',')
+
+if CORS_ALLOW_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=CORS_ALLOW_ORIGINS,
+        allow_methods=["*"],
+        allow_headers=["*"]
+    )
 
 
 class WriteQuery(BaseModel):
