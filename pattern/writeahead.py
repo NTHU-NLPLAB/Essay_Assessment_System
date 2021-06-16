@@ -1,8 +1,8 @@
 import os
 
-from starlette.responses import UJSONResponse
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import UJSONResponse
 from pydantic import BaseModel
 import ujson as json
 import spacy

@@ -1,7 +1,7 @@
 import os
-from starlette.responses import UJSONResponse
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import UJSONResponse
 from pydantic import BaseModel
 
 from .model import predict_cerf
