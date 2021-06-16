@@ -9,7 +9,7 @@ from .model import predict_cerf
 app = FastAPI()
 
 # Define CORS whitelist
-CORS_ALLOW_ORIGINS = os.getenv('CORS_ALLOW_ORIGINS').split(',')
+CORS_ALLOW_ORIGINS = os.getenv('CORS_ALLOW_ORIGINS', '').split(',')
 
 app.add_middleware(
     CORSMiddleware,

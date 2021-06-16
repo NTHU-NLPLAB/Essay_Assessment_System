@@ -18,7 +18,7 @@ nlp = spacy.load(os.environ.get('SPACY_MODEL', 'en_core_web_sm'), disable=['pars
 
 
 # Define CORS whitelist
-CORS_ALLOW_ORIGINS = os.getenv('CORS_ALLOW_ORIGINS').split(',')
+CORS_ALLOW_ORIGINS = os.getenv('CORS_ALLOW_ORIGINS', '').split(',')
 
 if CORS_ALLOW_ORIGINS:
     app.add_middleware(
