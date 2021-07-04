@@ -36,14 +36,14 @@ class WriteQuery(BaseModel):
     patterns: str = None
 
 
-@app.post("/suggest_gp/", response_class=UJSONResponse)
+@app.post("/api/suggest/gp/", response_class=UJSONResponse)
 def suggest_gp(res: WriteQuery):
     res.headword, res.pos = get_head(res.text)
     res.patterns = EN_PATTERNS[res.pos].get(res.headword, [])
     return res
 
 
-@app.post("/suggest_move/", response_class=UJSONResponse)
+@app.post("/api/suggest/move/", response_class=UJSONResponse)
 def suggest_move(res: WriteQuery):
     return MOVE_PATTERNS.get(res.text) or tuple(MOVE_PATTERNS.keys())
 
