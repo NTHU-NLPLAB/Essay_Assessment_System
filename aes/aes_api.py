@@ -25,6 +25,6 @@ class AesQuery(BaseModel):
 
 
 @app.post("/api/aes/", response_class=UJSONResponse)
-def suggest_gp(res: AesQuery):
+def assess_text(res: AesQuery):
     res.score = predict_cerf(res.text)
     return res
