@@ -12,6 +12,20 @@ APP_DIR = os.path.dirname(os.path.abspath(__file__))
 EN_PATTERNS = json.load(open(os.path.join(APP_DIR, 'en_patterns.json')))
 MOVE_PATTERNS = json.load(open(os.path.join(APP_DIR, 'move_patterns.json')))
 
+MOVES = {
+    'Result': 'res',
+    'Background': 'bkg',
+    'Method': 'mth',
+    'Discussion': 'dis',
+    'Gap': 'gp',
+    'The basis of the work': 'bas',
+    'Cause and effect': 'c/e',
+    'Definition': 'def',
+    'Purpose': 'pp',
+    'Literature review': 'lit',
+    'Statements of textual organization': 'txt',
+    'Contrastive or comparative statements': 'c/c'
+}
 
 app = FastAPI()
 nlp = spacy.load(os.environ.get('SPACY_MODEL', 'en_core_web_sm'), disable=['parser', 'ner'])
@@ -45,7 +59,7 @@ def suggest_gp(res: WriteQuery):
 
 @app.post("/api/suggest/move/", response_class=UJSONResponse)
 def suggest_move(res: WriteQuery):
-    return MOVE_PATTERNS.get(res.text) or tuple(MOVE_PATTERNS.keys())
+    return MOVE_PATTERNS.get(MOVES.get(res.text)) or tuple(MOVES.keys())
 
 
 def get_head(text):
