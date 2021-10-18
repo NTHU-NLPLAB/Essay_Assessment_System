@@ -2,15 +2,15 @@ import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import UJSONResponse
+from fastapi.responses import ORJSONResponse
 from pydantic import BaseModel
-import ujson as json
+import orjson as json
 import spacy
 
 
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
-EN_PATTERNS = json.load(open(os.path.join(APP_DIR, 'en_patterns.json')))
-MOVE_PATTERNS = json.load(open(os.path.join(APP_DIR, 'move_patterns.json')))
+EN_PATTERNS = json.loads(open(os.path.join(APP_DIR, 'en_patterns.json'), 'rb').read())
+MOVE_PATTERNS = json.loads(open(os.path.join(APP_DIR, 'move_patterns.json'), 'rb').read())
 
 MOVES = {
     'Result': 'res',
@@ -45,19 +45,20 @@ if CORS_ALLOW_ORIGINS:
 
 class WriteQuery(BaseModel):
     text: str
+    caret: int = 0
     headword: str = None
     pos: str = None
     patterns: str = None
 
 
-@app.post("/api/suggest/gp/", response_class=UJSONResponse)
+@app.post("/api/suggest/gp/", response_class=ORJSONResponse)
 def suggest_gp(res: WriteQuery):
     res.headword, res.pos = get_head(res.text)
     res.patterns = EN_PATTERNS[res.pos].get(res.headword, [])
     return res
 
 
-@app.post("/api/suggest/move/", response_class=UJSONResponse)
+@app.post("/api/suggest/move/", response_class=ORJSONResponse)
 def suggest_move(res: WriteQuery):
     return MOVE_PATTERNS.get(MOVES.get(res.text)) or tuple(MOVES.keys())
 
