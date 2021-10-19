@@ -40,7 +40,7 @@ class WriteQuery(BaseModel):
 
 @app.post("/api/suggest/gp/", response_class=ORJSONResponse)
 def suggest_gp(res: WriteQuery):
-    res.headword, res.pos = get_head(res.text)
+    res.headword, res.pos = get_head(res.text, res.caret)
     res.patterns = EN_PATTERNS[res.pos].get(res.headword, [])
     return res
 
@@ -50,8 +50,10 @@ def suggest_move(res: WriteQuery):
     return MOVE_PATTERNS.get(MOVES.get(res.text)) or tuple(MOVES.keys())
 
 
-def get_head(text):
+def get_head(text, caret=0):
     for token in reversed(nlp(text)):
+        if caret and token.idx > caret:
+            continue
         if token.pos_ in ('VERB', 'NOUN', 'ADJ'):
             return (token.text if token.lemma_.startswith('-') else token.lemma_, token.pos_)
     return '', 'NOUN'
