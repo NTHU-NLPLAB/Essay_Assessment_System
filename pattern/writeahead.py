@@ -1,7 +1,6 @@
 import os
 
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import ORJSONResponse
 from pydantic import BaseModel
 import orjson as json
@@ -29,18 +28,6 @@ MOVES = {
 
 app = FastAPI()
 nlp = spacy.load(os.environ.get('SPACY_MODEL', 'en_core_web_sm'), disable=['parser', 'ner'])
-
-
-# Define CORS whitelist
-CORS_ALLOW_ORIGINS = os.getenv('CORS_ALLOW_ORIGINS', '').split(',')
-
-if CORS_ALLOW_ORIGINS:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=CORS_ALLOW_ORIGINS,
-        allow_methods=["*"],
-        allow_headers=["*"]
-    )
 
 
 class WriteQuery(BaseModel):
