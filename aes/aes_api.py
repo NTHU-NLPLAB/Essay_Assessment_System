@@ -1,10 +1,12 @@
+from typing import Union
 import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import UJSONResponse
 from pydantic import BaseModel
 
-from .model import predict_cerf
+from .model import predict, score_to_cerf
 
 app = FastAPI()
 
@@ -23,9 +25,13 @@ if CORS_ALLOW_ORIGINS:
 class AesQuery(BaseModel):
     text: str
     score: str = None
+    raw_score: Union[float, None] = None
 
 
 @app.post("/api/aes/", response_class=UJSONResponse)
 def assess_text(res: AesQuery):
-    res.score = predict_cerf(res.text)
+    raw_score = predict(res.text)
+    if raw_score:
+        res.raw_score = raw_score
+    res.score = score_to_cerf(raw_score)
     return res
