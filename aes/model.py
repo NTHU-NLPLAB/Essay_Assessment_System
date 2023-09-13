@@ -23,9 +23,9 @@ with open(VOCAB_FILE_PATH, 'rb') as vocab_file:
 def predict(text):
     # replace OOV tokens to '<unk>' tokens
     tokens = [vocab[word] if word in vocab else vocab['<unk>'] for word in text.strip().lower().split()]
-    test_sentence = sequence.pad_sequences([tokens], maxlen=350)
+    test_sentence = sequence.data_utils.pad_sequences([tokens], maxlen=350)
     score = aes_model.predict(test_sentence).squeeze()
-    return score
+    return float(score)
 
 
 def score_to_cerf(raw_score):
