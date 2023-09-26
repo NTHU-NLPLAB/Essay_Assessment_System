@@ -9,4 +9,4 @@ In the command line, enter
 uvicorn pattern.writeahead:app --reload
 ```
 
-The servies will be hosted at `localhost:3000` by default
+The servies will be hosted at `localhost:8000` by default
