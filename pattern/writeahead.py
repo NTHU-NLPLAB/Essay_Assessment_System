@@ -56,4 +56,5 @@ def get_head(text, caret=0):
             continue
         if token.pos_ in ('VERB', 'NOUN', 'ADJ'):
             return (token.text if token.lemma_.startswith('-') else token.lemma_, token.pos_)
-    return '', 'NOUN'
+        else:
+            return '', 'NOUN'
